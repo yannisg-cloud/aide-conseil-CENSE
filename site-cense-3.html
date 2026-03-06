@@ -1795,7 +1795,7 @@ function oGoBack() {
 ══════════════════════════════ */
 function rcShowPanel(id) {
   document.querySelectorAll('.rc-panel').forEach(p => p.classList.remove('active'));
-  const panel = document.getElementById('rc-panel-' + id");
+  const panel = document.getElementById('rc-panel-' + id);
   if (panel) panel.classList.add('active');
   document.querySelectorAll('.rc-qtab').forEach(t => {
     const txt = t.textContent.toLowerCase().trim();
