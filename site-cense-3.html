@@ -1546,7 +1546,7 @@ body {
     <div class="cmp-section-header"><div class="cmp-section-title">Payer / Encaisser</div></div>
 
     <div class="cmp-row">
-      <div class="cmp-feature-name">Compte Pro (IBAN + 1ère carte)</div>
+      <div class="cmp-feature-name">Compte Pro (IBAN + 1ère "carte)</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell col-highlight"><span class="cmp-tag-offert">Offert</span></div>
       <div class="cmp-cell"><span class="cmp-tag-offert">Offert</span></div>
@@ -1631,7 +1631,7 @@ body {
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
-      <div class="cmp-feature-name">Bons de commandes, livraisons &amp; gestion des ventes et stocks</div>
+      <div class="cmp-feature-name">Bons de commandes, livraisons & gestion des ventes et stocks</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell col-highlight"><span class="cmp-no">—</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
@@ -1701,7 +1701,7 @@ body {
 ══════════════════════════════ */
 function navigate(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('page-' + page).classList.add('ac""tive');
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
   const navEl = document.getElementById('nav-' + page);
   if (navEl) navEl.classList.add('active');
@@ -1796,7 +1796,7 @@ function oGoBack() {
 function rcShowPanel(id) {
   document.querySelectorAll('.rc-panel').forEach(p => p.classList.remove('active'));
   const panel = document.getElementById('rc-panel-' + id);
-  if (panel) panel.classList.add('active');
+  if ""(panel) panel.classList.add('active');
   document.querySelectorAll('.rc-qtab').forEach(t => {
     const txt = t.textContent.toLowerCase().trim();
     t.classList.toggle('active',
