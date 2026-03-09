@@ -428,12 +428,6 @@ body {
   border-left: 1px solid #E8C0E8;
   position: relative;
 }
-.cmp-offer-col.highlight {
-  background: #2D0B3E;
-}
-.cmp-offer-col.highlight .cmp-offer-name { color: white; }
-.cmp-offer-col.highlight .cmp-offer-price { color: #F096F0; }
-.cmp-offer-col.highlight .cmp-offer-price-sub { color: rgba(255,255,255,0.5); }
 .cmp-offer-name {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
@@ -534,7 +528,7 @@ body {
   font-size: 0.8rem;
 }
 .cmp-cell:last-child { border-right: none; }
-.cmp-cell.col-highlight { background: rgba(45,11,62,0.03); }
+.cmp-cell.{ background: rgba(45,11,62,0.03); }
 .cmp-yes { color: #2D0B3E; font-size: 1.1rem; font-weight: 700; }
 .cmp-no { color: #D0B0D0; font-size: 1.1rem; }
 .cmp-tag-offert { background: #F096F0; color: #2D0B3E; font-size: 0.6rem; font-weight: 800; padding: 0.12rem 0.45rem; border-radius: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -867,7 +861,7 @@ body {
 .rc-qtab:hover, .rc-qtab.active { background: #2D0B3E; color: white; border-color: #2D0B3E; }
 
 /* ── MAIN LAYOUT ── */
-.rc-main-layout { max-width: 1100px; margin: 0 auto 4rem; padding: 0 2rem; display: grid; grid-template-columns: 240px 1fr; gap: 1.2rem; align-items: start; }
+.rc-main-layout { max-width: 1100px; margin: 0 auto 4rem; padding: 0 2rem; display: grid; grid-template-columns: 1fr; gap: 1.2rem; align-items: start; }
 
 /* ── SIDEBAR ── */
 .rc-sidebar { position: sticky; top: 4rem; background: white; border: 1.5px solid #E8C0E8; border-radius: 14px; overflow: hidden; }
@@ -1198,7 +1192,7 @@ body {
               .sci-table .sub { font-size:0.68rem; color:#7A5A8A; }
             
 /* ── Bouton Retour ─────────────────────────── */
-.back-btn {
+.back-btn { position: relative; z-index: 10; 
   display: inline-flex; align-items: center; gap: 0.4rem;
   padding: 0.4rem 1.1rem; background: none;
   border: 1.5px solid #9B6BB5; border-radius: 20px;
@@ -1208,11 +1202,11 @@ body {
 .back-btn:hover { background: #9B6BB5; color: #fff; }
 
 /* ── Page Décisionnelle ────────────────────── */
-#page-decisional { min-height: 100vh; background: #F8F4FC; padding-bottom: 3rem; }
+#page-decisional { min-height: 100vh; background: #F8F4FC; padding: 0.5rem 2rem 3rem; }
 .dec-header { padding: 2rem 2rem 0.5rem; }
 .dec-header h2 { font-size: 1.5rem; color: #2D0B3E; margin: 0 0 0.3rem; }
 .dec-header p { color: #6B5B7B; font-size: 0.9rem; margin: 0; }
-.dec-sticky { position: sticky; top: 0; z-index: 100; background: #fff;
+.dec-sticky { position: sticky; top: 60px; z-index: 100; background: #fff;
   border-bottom: 1px solid #E8D5F5; padding: 0.8rem 2rem;
   display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
 .dec-sticky-label { font-size: 0.78rem; color: #9B8AAA; text-transform: uppercase; letter-spacing: .05em; }
@@ -1229,7 +1223,7 @@ body {
 .dec-progress { display: flex; gap: 3px; align-items: center; margin-left: auto; }
 .dec-progress-step { width: 28px; height: 6px; border-radius: 3px; background: #E0D4ED; transition: background 0.3s; }
 .dec-progress-step.active { background: #9B6BB5; }
-.dec-groups { padding: 1rem 2rem; display: flex; flex-direction: column; gap: 1rem; max-width: 860px; }
+.dec-groups { padding: 1rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 1100px; }
 .dec-group { background: #fff; border-radius: 12px; box-shadow: 0 1px 6px rgba(80,30,110,.07); overflow: hidden; }
 .dec-group-header {
   display: flex; align-items: center; gap: 0.7rem;
@@ -1267,6 +1261,65 @@ body {
 
 .home-card-d { border-left-color: #F39C12; }
 .home-card-d .home-card-icon { background: #FEF9E7; color: #F39C12; }
+
+
+/* ── Page Offres — Redesign ──────────────── */
+#page-offres {
+  background: linear-gradient(135deg, #1a0a2e 0%, #2D0B3E 40%, #3d1654 100%) !important;
+  min-height: 100vh; padding: 0 0 3rem;
+}
+#page-offres .back-btn { color: #D4B8E8; border-color: #7A5A8A; margin: 0.8rem 2rem; }
+#page-offres .back-btn:hover { background: #9B6BB5; color: #fff; }
+#page-offres .p-header {
+  text-align: center; padding: 1.8rem 2rem 0.5rem;
+}
+#page-offres .p-header .o-badge-tool {
+  display: inline-block; background: linear-gradient(135deg, #F096F0, #9B6BB5);
+  color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .12em; padding: 0.35rem 1.2rem; border-radius: 20px;
+}
+#page-offres .p-header h2 {
+  font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800;
+  color: #fff !important; margin: 0.5rem 0 0.3rem; line-height: 1.15;
+}
+#page-offres .p-header p, #page-offres .o-section-intro {
+  color: #C4A8D8 !important; font-style: italic;
+}
+#page-offres .o-choices-grid {
+  display: grid !important; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 1.2rem !important; padding: 0 2rem; max-width: 1100px; margin: 0 auto;
+}
+#page-offres .o-choice-card {
+  background: rgba(255,255,255,0.06) !important; border: 1px solid rgba(155,107,181,0.25) !important;
+  border-radius: 16px !important; padding: 1.5rem !important; cursor: pointer;
+  transition: all 0.25s ease !important; backdrop-filter: blur(8px);
+  box-shadow: none !important;
+}
+#page-offres .o-choice-card:hover {
+  background: rgba(255,255,255,0.12) !important; border-color: #F096F0 !important;
+  transform: translateY(-4px) !important; box-shadow: 0 12px 32px rgba(45,11,62,0.4) !important;
+}
+#page-offres .o-card-icon {
+  background: rgba(155,107,181,0.15) !important; border-radius: 12px;
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+}
+#page-offres .o-card-title { color: #fff !important; font-weight: 700; font-size: 1.05rem; }
+#page-offres .o-card-badge {
+  font-size: 0.68rem !important; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; padding: 0.2rem 0.7rem; border-radius: 10px;
+}
+#page-offres .o-badge-starter { background: #3d1654 !important; color: #D4B8E8 !important; }
+#page-offres .o-badge-essentiel { background: rgba(26,82,118,0.4) !important; color: #85C1E9 !important; }
+#page-offres .o-badge-avancee { background: rgba(30,132,73,0.25) !important; color: #82E0AA !important; }
+#page-offres .o-result-header { color: #fff !important; }
+#page-offres .o-result-label { color: #C4A8D8 !important; }
+#page-offres .o-result-offer-name { color: #F096F0 !important; }
+#page-offres .o-result-preconisation { background: rgba(255,255,255,0.05) !important; border-color: rgba(155,107,181,0.2) !important; }
+#page-offres .o-feature-section { background: rgba(255,255,255,0.04) !important; border: 1px solid rgba(155,107,181,0.15) !important; border-radius: 12px; }
+#page-offres .o-feature-section-header { color: #D4B8E8 !important; }
+#page-offres .o-feature-item { color: #E8D5F5 !important; }
+#page-offres .o-check { color: #82E0AA !important; }
 </style>
 
             <table class="sci-table">
@@ -1586,21 +1639,21 @@ body {
     <div class="cmp-row">
       <div class="cmp-feature-name">Dashboard de suivi des factures</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Tableau de bord avancé avec indicateurs personnalisés</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-no">—</span></div>
+      <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Prévisionnel, Business Plan</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-no">—</span></div>
+      <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
@@ -1611,28 +1664,28 @@ body {
     <div class="cmp-row">
       <div class="cmp-feature-name">Compte Pro (IBAN + 1ère carte)</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-tag-offert">Offert</span></div>
+      <div class="cmp-cell"><span class="cmp-tag-offert">Offert</span></div>
       <div class="cmp-cell"><span class="cmp-tag-offert">Offert</span></div>
       <div class="cmp-cell"><span class="cmp-tag-offert">Offert</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Initiation de paiements / prélèvements</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Encaissement / Décaissement / Suivi de caisse</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Collecte et paiement des notes de frais</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-no">—</span></div>
+      <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
@@ -1643,28 +1696,28 @@ body {
     <div class="cmp-row">
       <div class="cmp-feature-name">1 accès utilisateur pour le/la dirigeant(e)</div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Messagerie, notifications</div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Accès aux livrables de mon expert-comptable</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">2 accès invités</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
@@ -1675,28 +1728,28 @@ body {
     <div class="cmp-row">
       <div class="cmp-feature-name">Édition de devis et factures</div>
       <div class="cmp-cell"><span class="cmp-text">Simple (3/mois)</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-bold">Simple illimité</span></div>
+      <div class="cmp-cell"><span class="cmp-bold">Simple illimité</span></div>
       <div class="cmp-cell"><span class="cmp-bold">Avancé illimité</span></div>
       <div class="cmp-cell"><span class="cmp-bold">Avancé illimité</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Interconnexion avec logiciel de facturation</div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Relances automatiques des impayés</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-no">—</span></div>
+      <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Bons de commandes, livraisons &amp; gestion des ventes et stocks</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-no">—</span></div>
+      <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
@@ -1707,35 +1760,35 @@ body {
     <div class="cmp-row">
       <div class="cmp-feature-name">Envoi / Réception de factures (e-reporting / e-invoicing)</div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Centralisation des factures et partage à mon expert-comptable</div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Agrégation bancaire</div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Coffre-fort à valeur probante</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
     <div class="cmp-row">
       <div class="cmp-feature-name">Trousseau de mots de passe</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell col-highlight"><span class="cmp-yes">✓</span></div>
+      <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
