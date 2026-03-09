@@ -979,6 +979,7 @@ body {
     <div class="nav-link" id="nav-offres" onclick="navigate('offres')">Recommander une offre</div>
     <div class="nav-link" id="nav-facturation" onclick="navigate('facturation')">Facturation électronique</div>
     <div class="nav-link" id="nav-comparaison" onclick="navigate('comparaison')">Comparer les offres</div>
+    <div class="nav-link" id="nav-decisional" onclick="navigate('decisional')">Choisir mon offre</div>
   </div>
 </nav>
 
@@ -1041,6 +1042,14 @@ body {
           Accéder à l'outil <span class="card-cta-arrow">→</span>
         </div>
       </div>
+        <div class="home-card home-card-d" onclick="navigate('decisional')">
+          <div class="home-card-icon">🎯</div>
+          <div class="home-card-content">
+            <div class="home-card-title">Choisir la bonne offre</div>
+            <div class="home-card-desc">Outil interactif pour identifier l'offre adaptée selon les besoins du client</div>
+          </div>
+          <div class="home-card-arrow">&#8250;</div>
+        </div>
 
     </div>
 
@@ -1058,6 +1067,7 @@ body {
      PAGE 1 — RECOMMANDATION OFFRES
 ══════════════════════════════════════════════════════ -->
 <div id="page-offres" class="page">
+      <button class="back-btn" onclick="history.back()">&#8592; Retour</button>
 
   <div class="p-header">
     <div class="logo-label">Outil de recommandation</div>
@@ -1080,6 +1090,7 @@ body {
      PAGE 2 — FACTURATION ÉLECTRONIQUE RC
 ══════════════════════════════════════════════════════ -->
 <div id="page-facturation" class="page">
+      <button class="back-btn" onclick="history.back()">&#8592; Retour</button>
 
   <div class="rc-topbar">
     <span class="rc-topbar-title">⚡ Outil RC — Réforme Facturation Électronique</span>
@@ -1116,27 +1127,7 @@ body {
   <div class="rc-main-layout">
 
     <!-- SIDEBAR -->
-    <div class="rc-sidebar">
-      <div class="rc-sidebar-header">Statuts juridiques</div>
-      <div class="rc-sidebar-list">
-        <div class="rc-sidebar-item active" onclick="rcShowPanel('vue-ensemble'); rcSetActive(this)"><span class="rc-sicon">📊</span> Vue d'ensemble</div>
-        <div class="rc-sidebar-divider"></div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('sci'); rcSetActive(this)"><span class="rc-sicon">🏛️</span> SCI</div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('holding'); rcSetActive(this)"><span class="rc-sicon">🏢</span> Holding</div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('lmnp'); rcSetActive(this)"><span class="rc-sicon">🏠</span> LMNP / LMP</div>
-        <div class="rc-sidebar-divider"></div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('bnc'); rcSetActive(this)"><span class="rc-sicon">⚖️</span> BNC / Prof. libérales</div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('sante'); rcSetActive(this)"><span class="rc-sicon">🩺</span> Professions de santé</div>
-        <div class="rc-sidebar-divider"></div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('agri'); rcSetActive(this)"><span class="rc-sicon">🌾</span> Agriculteurs</div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('commerce'); rcSetActive(this)"><span class="rc-sicon">🛍️</span> Commerce / Négoce</div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('chr'); rcSetActive(this)"><span class="rc-sicon">🍽️</span> CHR</div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('btp'); rcSetActive(this)"><span class="rc-sicon">🔨</span> BTP / Artisans</div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('pharma'); rcSetActive(this)"><span class="rc-sicon">💊</span> Pharmacies</div>
-        <div class="rc-sidebar-divider"></div>
-        <div class="rc-sidebar-item" onclick="rcShowPanel('sanctions'); rcSetActive(this)"><span class="rc-sicon">⚠️</span> Sanctions</div>
-      </div>
-    </div>
+    
 
     <!-- CONTENT PANELS -->
     <div class="rc-content-area">
@@ -1205,7 +1196,78 @@ body {
               .sci-table .opt { color:#C85D00; font-size:0.7rem; font-style:italic; padding:0.15rem 0.4rem; background:#FEF0E5; border-radius:4px; display:inline-block; }
               .sci-table .nature { font-weight:500; color:#2D0B3E; }
               .sci-table .sub { font-size:0.68rem; color:#7A5A8A; }
-            </style>
+            
+/* ── Bouton Retour ─────────────────────────── */
+.back-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 1.1rem; background: none;
+  border: 1.5px solid #9B6BB5; border-radius: 20px;
+  color: #7A5A8A; font-size: 0.82rem; cursor: pointer;
+  margin: 1rem 0 0.5rem; transition: all 0.2s; font-family: inherit;
+}
+.back-btn:hover { background: #9B6BB5; color: #fff; }
+
+/* ── Page Décisionnelle ────────────────────── */
+#page-decisional { min-height: 100vh; background: #F8F4FC; padding-bottom: 3rem; }
+.dec-header { padding: 2rem 2rem 0.5rem; }
+.dec-header h2 { font-size: 1.5rem; color: #2D0B3E; margin: 0 0 0.3rem; }
+.dec-header p { color: #6B5B7B; font-size: 0.9rem; margin: 0; }
+.dec-sticky { position: sticky; top: 0; z-index: 100; background: #fff;
+  border-bottom: 1px solid #E8D5F5; padding: 0.8rem 2rem;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.dec-sticky-label { font-size: 0.78rem; color: #9B8AAA; text-transform: uppercase; letter-spacing: .05em; }
+.dec-offer-badge {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.5rem 1.4rem; border-radius: 30px; font-weight: 700;
+  font-size: 1rem; transition: all 0.35s; min-width: 140px;
+}
+.dec-offer-badge.lvl-basic    { background:#EEE8F5; color:#5A3A7A; }
+.dec-offer-badge.lvl-essentiel{ background:#D6EAF8; color:#1A5276; }
+.dec-offer-badge.lvl-avance   { background:#D5F5E3; color:#1E8449; }
+.dec-offer-badge.lvl-pilotage { background:#FDE8D8; color:#A04000; }
+.dec-offer-sub { font-size: 0.8rem; color: #9B8AAA; }
+.dec-progress { display: flex; gap: 3px; align-items: center; margin-left: auto; }
+.dec-progress-step { width: 28px; height: 6px; border-radius: 3px; background: #E0D4ED; transition: background 0.3s; }
+.dec-progress-step.active { background: #9B6BB5; }
+.dec-groups { padding: 1rem 2rem; display: flex; flex-direction: column; gap: 1rem; max-width: 860px; }
+.dec-group { background: #fff; border-radius: 12px; box-shadow: 0 1px 6px rgba(80,30,110,.07); overflow: hidden; }
+.dec-group-header {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.9rem 1.2rem; cursor: pointer;
+  font-weight: 600; color: #2D0B3E; font-size: 0.95rem;
+  user-select: none; transition: background .15s;
+}
+.dec-group-header:hover { background: #F8F4FC; }
+.dec-group-icon { font-size: 1.15rem; }
+.dec-group-arrow { margin-left: auto; transition: transform .2s; color: #9B6BB5; }
+.dec-group.open .dec-group-arrow { transform: rotate(180deg); }
+.dec-group-items { display: none; border-top: 1px solid #F0E8F8; padding: 0.4rem 0; }
+.dec-group.open .dec-group-items { display: block; }
+.dec-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.55rem 1.2rem; cursor: pointer;
+  transition: background .12s; font-size: 0.88rem;
+}
+.dec-item:hover { background: #FBF8FF; }
+.dec-item input[type=checkbox] { width: 16px; height: 16px; accent-color: #9B6BB5; cursor: pointer; flex-shrink: 0; }
+.dec-item-label { flex: 1; color: #3D2060; }
+.dec-feat-badge {
+  font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.55rem;
+  border-radius: 10px; white-space: nowrap; flex-shrink: 0;
+}
+.dec-feat-badge.basic     { background:#EEE8F5; color:#5A3A7A; }
+.dec-feat-badge.essentiel { background:#D6EAF8; color:#1A5276; }
+.dec-feat-badge.avance    { background:#D5F5E3; color:#1E8449; }
+.dec-feat-badge.pilotage  { background:#FDE8D8; color:#A04000; }
+.dec-reset { padding: 0 2rem 0.5rem; }
+.dec-reset button {
+  background: none; border: none; color: #9B8AAA; font-size: 0.8rem;
+  cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit;
+}
+
+.home-card-d { border-left-color: #F39C12; }
+.home-card-d .home-card-icon { background: #FEF9E7; color: #F39C12; }
+</style>
 
             <table class="sci-table">
               <thead>
@@ -1477,6 +1539,7 @@ body {
      PAGE 3 — COMPARAISON DES OFFRES
 ══════════════════════════════════════════════════════ -->
 <div id="page-comparaison" class="page">
+      <button class="back-btn" onclick="history.back()">&#8592; Retour</button>
 
   <div class="cmp-header">
     <div class="logo-label">Tableau comparatif</div>
@@ -1497,8 +1560,8 @@ body {
         <div class="cmp-offer-price-sub">&nbsp;</div>
       </div>
 
-      <div class="cmp-offer-col highlight">
-        <div class="cmp-best-badge">⭐ Le + populaire</div>
+      <div class="cmp-offer-col">
+        
         <div class="cmp-offer-name">Essentiel</div>
         <div class="cmp-offer-price">29€</div>
         <div class="cmp-offer-price-sub">HT / mois *</div>
@@ -1699,14 +1762,24 @@ body {
 /* ══════════════════════════════
    NAVIGATION BETWEEN PAGES
 ══════════════════════════════ */
-function navigate(page) {
+function navigate(page, pushState) {
+  if (pushState === undefined) pushState = true;
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
+  const pageEl = document.getElementById('page-' + page);
+  if (!pageEl) return;
+  pageEl.classList.add('active');
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
   const navEl = document.getElementById('nav-' + page);
   if (navEl) navEl.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (pushState) history.pushState({ page: page }, '', '#' + page);
 }
+window.addEventListener('popstate', function(e) {
+  if (e.state && e.state.page) navigate(e.state.page, false);
+  else navigate('home', false);
+});
+// Initialise l'état de l'historique sur la page d'accueil
+history.replaceState({ page: 'home' }, '', location.href.split('#')[0] + '#home');
 
 /* ══════════════════════════════
    OFFRES TOOL
@@ -1840,6 +1913,232 @@ function rcSetActiveByPanel(id) {
       item.classList.add('active');
   });
 }
+
+// ── Arbre décisionnel ────────────────────────────────────────
+function updateDecision() {
+  const levels = { basic: 0, essentiel: 1, avance: 2, pilotage: 3 };
+  const names  = ['Basic', 'Essentiel', 'Avancé', 'Pilotage'];
+  const icons  = ['📋', '⭐', '🚀', '🏆'];
+  const subs   = [
+    'Idéal pour démarrer avec la facturation électronique',
+    'Pour gérer sa comptabilité au quotidien',
+    'Pour automatiser et piloter son activité',
+    'Pour une vision globale et stratégique'
+  ];
+  const classes = ['lvl-basic', 'lvl-essentiel', 'lvl-avance', 'lvl-pilotage'];
+
+  const checked = document.querySelectorAll('#page-decisional input[type=checkbox]:checked');
+  let maxLvl = 0;
+  checked.forEach(cb => {
+    const lvl = levels[cb.dataset.offer] || 0;
+    if (lvl > maxLvl) maxLvl = lvl;
+  });
+
+  const badge = document.getElementById('dec-offer-badge');
+  if (badge) {
+    badge.className = 'dec-offer-badge ' + classes[maxLvl];
+    document.getElementById('dec-offer-icon').textContent = icons[maxLvl];
+    document.getElementById('dec-offer-name').textContent = names[maxLvl];
+    document.getElementById('dec-offer-sub').textContent =
+      checked.length === 0 ? 'Sélectionnez des fonctionnalités pour affiner' : subs[maxLvl];
+  }
+
+  // Progress bar
+  for (let i = 0; i < 4; i++) {
+    const step = document.getElementById('dec-step-' + i);
+    if (step) step.classList.toggle('active', i <= maxLvl);
+  }
+}
+
+function decToggle(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+function decReset() {
+  document.querySelectorAll('#page-decisional input[type=checkbox]').forEach(cb => cb.checked = false);
+  updateDecision();
+}
 </script>
+
+<div id="page-decisional" class="page">
+  <button class="back-btn" onclick="history.back()">&#8592; Retour</button>
+  <div class="dec-header">
+    <h2>🎯 Choisir la bonne offre</h2>
+    <p>Cochez les fonctionnalités dont votre client a besoin — nous identifions l'offre adaptée en temps réel.</p>
+  </div>
+
+  <!-- Recommandation live -->
+  <div class="dec-sticky">
+    <div>
+      <div class="dec-sticky-label">Offre recommandée</div>
+      <div class="dec-offer-badge lvl-basic" id="dec-offer-badge">
+        <span id="dec-offer-icon">⬜</span>
+        <span id="dec-offer-name">Basic</span>
+      </div>
+    </div>
+    <div class="dec-offer-sub" id="dec-offer-sub">Sélectionnez des fonctionnalités pour affiner</div>
+    <div class="dec-progress">
+      <div class="dec-progress-step active" id="dec-step-0"></div>
+      <div class="dec-progress-step" id="dec-step-1"></div>
+      <div class="dec-progress-step" id="dec-step-2"></div>
+      <div class="dec-progress-step" id="dec-step-3"></div>
+    </div>
+  </div>
+
+  <div class="dec-groups">
+
+    <!-- Facturation -->
+    <div class="dec-group open">
+      <div class="dec-group-header" onclick="decToggle(this)">
+        <span class="dec-group-icon">📄</span>
+        <span>Facturation &amp; Devis</span>
+        <span class="dec-group-arrow">▾</span>
+      </div>
+      <div class="dec-group-items">
+        <label class="dec-item">
+          <input type="checkbox" data-offer="basic" onchange="updateDecision()">
+          <span class="dec-item-label">Envoi &amp; réception de factures (e-invoicing)</span>
+          <span class="dec-feat-badge basic">Basic</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="basic" onchange="updateDecision()">
+          <span class="dec-item-label">Édition simple de devis et factures</span>
+          <span class="dec-feat-badge basic">Basic</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
+          <span class="dec-item-label">Édition illimitée de devis et factures</span>
+          <span class="dec-feat-badge essentiel">Essentiel</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="avance" onchange="updateDecision()">
+          <span class="dec-item-label">Édition avancée (avoirs, remises, multi-TVA…)</span>
+          <span class="dec-feat-badge avance">Avancé</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="avance" onchange="updateDecision()">
+          <span class="dec-item-label">Relances automatiques des impayés</span>
+          <span class="dec-feat-badge avance">Avancé</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="avance" onchange="updateDecision()">
+          <span class="dec-item-label">Bons de commande, gestion des stocks &amp; livraisons</span>
+          <span class="dec-feat-badge avance">Avancé</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Trésorerie -->
+    <div class="dec-group open">
+      <div class="dec-group-header" onclick="decToggle(this)">
+        <span class="dec-group-icon">🏦</span>
+        <span>Trésorerie &amp; Paiements</span>
+        <span class="dec-group-arrow">▾</span>
+      </div>
+      <div class="dec-group-items">
+        <label class="dec-item">
+          <input type="checkbox" data-offer="basic" onchange="updateDecision()">
+          <span class="dec-item-label">Agrégation bancaire</span>
+          <span class="dec-feat-badge basic">Basic</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
+          <span class="dec-item-label">Encaissement / Décaissement / Suivi de caisse</span>
+          <span class="dec-feat-badge essentiel">Essentiel</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
+          <span class="dec-item-label">Initiation de paiements et prélèvements</span>
+          <span class="dec-feat-badge essentiel">Essentiel</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
+          <span class="dec-item-label">Compte Pro inclus (IBAN + 1ère carte)</span>
+          <span class="dec-feat-badge essentiel">Essentiel</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="avance" onchange="updateDecision()">
+          <span class="dec-item-label">Collecte et paiement des notes de frais</span>
+          <span class="dec-feat-badge avance">Avancé</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Comptabilité -->
+    <div class="dec-group open">
+      <div class="dec-group-header" onclick="decToggle(this)">
+        <span class="dec-group-icon">📊</span>
+        <span>Comptabilité &amp; Expert-comptable</span>
+        <span class="dec-group-arrow">▾</span>
+      </div>
+      <div class="dec-group-items">
+        <label class="dec-item">
+          <input type="checkbox" data-offer="basic" onchange="updateDecision()">
+          <span class="dec-item-label">Centralisation et partage des factures avec l'EC</span>
+          <span class="dec-feat-badge basic">Basic</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
+          <span class="dec-item-label">Accès aux livrables de l'expert-comptable</span>
+          <span class="dec-feat-badge essentiel">Essentiel</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
+          <span class="dec-item-label">Coffre-fort numérique à valeur probante</span>
+          <span class="dec-feat-badge essentiel">Essentiel</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Collaboration -->
+    <div class="dec-group open">
+      <div class="dec-group-header" onclick="decToggle(this)">
+        <span class="dec-group-icon">👥</span>
+        <span>Collaboration &amp; Accès</span>
+        <span class="dec-group-arrow">▾</span>
+      </div>
+      <div class="dec-group-items">
+        <label class="dec-item">
+          <input type="checkbox" data-offer="basic" onchange="updateDecision()">
+          <span class="dec-item-label">Messagerie et notifications</span>
+          <span class="dec-feat-badge basic">Basic</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
+          <span class="dec-item-label">2 accès invités (collaborateurs, associés…)</span>
+          <span class="dec-feat-badge essentiel">Essentiel</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Pilotage -->
+    <div class="dec-group open">
+      <div class="dec-group-header" onclick="decToggle(this)">
+        <span class="dec-group-icon">📈</span>
+        <span>Pilotage &amp; Analytics</span>
+        <span class="dec-group-arrow">▾</span>
+      </div>
+      <div class="dec-group-items">
+        <label class="dec-item">
+          <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
+          <span class="dec-item-label">Dashboard de suivi des factures</span>
+          <span class="dec-feat-badge essentiel">Essentiel</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="pilotage" onchange="updateDecision()">
+          <span class="dec-item-label">Tableau de bord avancé avec indicateurs personnalisés</span>
+          <span class="dec-feat-badge pilotage">Pilotage</span>
+        </label>
+        <label class="dec-item">
+          <input type="checkbox" data-offer="pilotage" onchange="updateDecision()">
+          <span class="dec-item-label">Prévisionnel et Business Plan</span>
+          <span class="dec-feat-badge pilotage">Pilotage</span>
+        </label>
+      </div>
+    </div>
+
+  </div><!-- end dec-groups -->
+  <div class="dec-reset"><button onclick="decReset()">Réinitialiser les sélections</button></div>
+</div>
 </body>
 </html>
