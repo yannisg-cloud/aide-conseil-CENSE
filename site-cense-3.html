@@ -958,7 +958,36 @@ body {
   .rc-sanctions { grid-template-columns: 1fr 1fr; }
   .nav-links .nav-link { font-size: 0.68rem; padding: 0.3rem 0.6rem; }
 }
-</style>
+
+    /* ── Card D (Aide au choix) ─── */
+    .tag-d { background: rgba(80,200,160,0.22); color: #3dc898; }
+    .home-card-d::before { background: linear-gradient(135deg, rgba(80,200,160,0.22), rgba(20,140,100,0.06)); }
+
+    /* ── RC Facturation — date badges ─── */
+    .rc-obli-cell-date {
+      font-size: 0.82rem !important; font-weight: 700 !important;
+      margin-top: 0.35rem; padding: 0.3rem 0.65rem;
+      border-radius: 8px; display: inline-block;
+    }
+    .rc-date-2026 { background: linear-gradient(135deg,#FFF3E0,#FFE0B2) !important;
+      color: #E65100 !important; border: 1px solid #FFB74D; }
+    .rc-date-2027 { background: linear-gradient(135deg,#E3F2FD,#BBDEFB) !important;
+      color: #0D47A1 !important; border: 1px solid #64B5F6; }
+    .rc-date-mixed { background: linear-gradient(135deg,#FFF3E0 40%,#E3F2FD 60%) !important;
+      color: #4A148C !important; border: 1px solid #CE93D8; }
+    .rc-date-info { background: #F3E5F5 !important; color: #6A1B9A !important;
+      border: 1px solid #CE93D8; }
+    .rc-obli-cell { border-radius:14px !important; padding:1rem !important;
+      border:1px solid rgba(0,0,0,0.06) !important; position:relative;
+      transition:transform 0.2s,box-shadow 0.2s; overflow:hidden; }
+    .rc-obli-cell:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.08); }
+    .rc-obli-cell-title { font-size:0.7rem !important; font-weight:800 !important;
+      text-transform:uppercase; letter-spacing:0.08em; opacity:0.65; margin-bottom:0.45rem !important; }
+    .rc-verdict { font-size:0.85rem !important; font-weight:700 !important;
+      line-height:1.3 !important; margin-bottom:0.3rem !important; display:block; }
+    .rc-obli-matrix { display:grid !important; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)) !important;
+      gap:0.75rem !important; margin:0.8rem 0 !important; }
+        </style>
 </head>
 <body>
 
@@ -995,9 +1024,7 @@ body {
       Accompagnez vos clients<br><em>avec les bons outils</em>
     </h1>
 
-    <p class="home-sub">
-      Trois ressources pour préparer vos rendez-vous : recommandez l'offre adaptée, maîtrisez la réforme de facturation électronique 2026, et comparez les offres côte à côte.
-    </p>
+    
 
     <div class="home-cards" style="grid-template-columns: 1fr 1fr 1fr; max-width: 1000px;">
 
@@ -1037,15 +1064,13 @@ body {
         </div>
       </div>
         <div class="home-card home-card-d" onclick="navigate('decisional')">
-          <div class="home-card-icon">🎯</div>
-          <div class="home-card-content">
-            <div class="home-card-title">Choisir la bonne offre</div>
-            <div class="home-card-desc">Outil interactif pour identifier l'offre adaptée selon les besoins du client</div>
-          </div>
-          <div class="home-card-arrow">&#8250;</div>
-        </div>
-
-    </div>
+          <div class="card-number">04</div>
+          <span class="card-tag tag-d">Aide au choix</span>
+          <span class="card-big-icon">&#127919;</span>
+          <div class="card-title-main">Choisir la bonne offre</div>
+          <p class="card-desc">Outil interactif pour identifier l’offre adaptée selon les besoins du client</p>
+          <div class="card-cta">Accéder à l’outil <span class="card-cta-arrow">→</span></div>
+            </div>
 
     <div class="home-features">
       <div class="home-feature"><span class="dot-f"></span>Mise à jour mars 2026</div>
@@ -1599,7 +1624,7 @@ body {
     <h1>Comparer les offres</h1>
     <p>4 offres pour tous les profils — Basic à Pilotage</p>
   </div>
-  <div class="cmp-note">* Offre Essentiel à 9€ HT/mois pour les SCI, Holding, BNC et LMNP &nbsp;·&nbsp; Version 1 — mise à jour 11/02/2026 &nbsp;·&nbsp; Document à usage interne uniquement</div>
+  <div class="cmp-note">* Offre Essentiel à 9€ HT/mois pour les SCI, Holding, BNC et LMNP &nbsp;·&nbsp; Carte supplémentaire : 5€ &nbsp;·&nbsp; Accès invité supplémentaire : 5€</div>
 
   <div class="cmp-wrapper">
 
@@ -1795,18 +1820,9 @@ body {
 
     <!-- ── OPTIONS & MARKETPLACE ── -->
     <div class="cmp-extras">
-      <div class="cmp-extra-box">
-        <div class="cmp-extra-box-header">⊕ Options <span class="pill">À partir d'Essentiel</span></div>
-        <div class="cmp-extra-item">Carte supplémentaire : 5€</div>
-        <div class="cmp-extra-item">Accès invité supplémentaire : 5€</div>
-      </div>
-      <div class="cmp-extra-box">
-        <div class="cmp-extra-box-header">⊕ Marketplace</div>
-        <div class="cmp-extra-item">Services COGEP</div>
-      </div>
-    </div>
+      
 
-    <div class="cmp-legal">Version 1 — mise à jour le 11/02/2026 · Document à usage interne uniquement</div>
+    
 
   </div>
 </div>
@@ -2011,7 +2027,30 @@ function decReset() {
   document.querySelectorAll('#page-decisional input[type=checkbox]').forEach(cb => cb.checked = false);
   updateDecision();
 }
-</script>
+
+  // ── Date badge classification ──────────────────────────────
+  function initDateBadges() {
+    document.querySelectorAll('.rc-obli-cell-date').forEach(function(el) {
+      el.classList.remove('rc-date-2026','rc-date-2027','rc-date-mixed','rc-date-info');
+      var txt = el.textContent || '';
+      var has26 = txt.includes('2026');
+      var has27 = txt.includes('2027');
+      if (has26 && has27) el.classList.add('rc-date-mixed');
+      else if (has26) el.classList.add('rc-date-2026');
+      else if (has27) el.classList.add('rc-date-2027');
+      else el.classList.add('rc-date-info');
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initDateBadges);
+  // Also patch rcShowPanel to re-run after panel switches
+  (function() {
+    var _orig = window.rcShowPanel;
+    if (typeof _orig === 'function') {
+      window.rcShowPanel = function() { _orig.apply(this, arguments); initDateBadges(); };
+    }
+  })();
+  // ──────────────────────────────────────────────────────────
+    </script>
 
 <div id="page-decisional" class="page">
   <button class="back-btn" onclick="history.back()">&#8592; Retour</button>
