@@ -962,21 +962,16 @@ body {
     /* ── Card D (Aide au choix) ─── */
     .tag-d { background: rgba(80,200,160,0.22); color: #3dc898; }
     .home-card-d::before { background: linear-gradient(135deg, rgba(80,200,160,0.22), rgba(20,140,100,0.06)); }
-
     /* ── RC Facturation — date badges ─── */
-    .rc-obli-cell-date {
-      font-size: 0.82rem !important; font-weight: 700 !important;
-      margin-top: 0.35rem; padding: 0.3rem 0.65rem;
-      border-radius: 8px; display: inline-block;
-    }
-    .rc-date-2026 { background: linear-gradient(135deg,#FFF3E0,#FFE0B2) !important;
-      color: #E65100 !important; border: 1px solid #FFB74D; }
-    .rc-date-2027 { background: linear-gradient(135deg,#E3F2FD,#BBDEFB) !important;
-      color: #0D47A1 !important; border: 1px solid #64B5F6; }
-    .rc-date-mixed { background: linear-gradient(135deg,#FFF3E0 40%,#E3F2FD 60%) !important;
-      color: #4A148C !important; border: 1px solid #CE93D8; }
-    .rc-date-info { background: #F3E5F5 !important; color: #6A1B9A !important;
-      border: 1px solid #CE93D8; }
+    .rc-obli-cell-date { font-size:0.82rem !important; font-weight:700 !important;
+      margin-top:0.35rem; padding:0.3rem 0.65rem; border-radius:8px; display:inline-block; }
+    .rc-date-2026 { background:linear-gradient(135deg,#FFF3E0,#FFE0B2) !important;
+      color:#E65100 !important; border:1px solid #FFB74D; }
+    .rc-date-2027 { background:linear-gradient(135deg,#E3F2FD,#BBDEFB) !important;
+      color:#0D47A1 !important; border:1px solid #64B5F6; }
+    .rc-date-mixed { background:linear-gradient(135deg,#FFF3E0 40%,#E3F2FD 60%) !important;
+      color:#4A148C !important; border:1px solid #CE93D8; }
+    .rc-date-info { background:#F3E5F5 !important; color:#6A1B9A !important; border:1px solid #CE93D8; }
     .rc-obli-cell { border-radius:14px !important; padding:1rem !important;
       border:1px solid rgba(0,0,0,0.06) !important; position:relative;
       transition:transform 0.2s,box-shadow 0.2s; overflow:hidden; }
@@ -987,7 +982,7 @@ body {
       line-height:1.3 !important; margin-bottom:0.3rem !important; display:block; }
     .rc-obli-matrix { display:grid !important; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)) !important;
       gap:0.75rem !important; margin:0.8rem 0 !important; }
-        </style>
+    </style>
 </head>
 <body>
 
@@ -1820,7 +1815,11 @@ body {
 
     <!-- ── OPTIONS & MARKETPLACE ── -->
     <div class="cmp-extras">
-      
+      <div class="cmp-extra-box">
+        <div class="cmp-extra-box-header">⊕ Marketplace</div>
+        <div class="cmp-extra-item">Services COGEP</div>
+      </div>
+    </div>
 
     
 
@@ -2028,29 +2027,21 @@ function decReset() {
   updateDecision();
 }
 
-  // ── Date badge classification ──────────────────────────────
   function initDateBadges() {
     document.querySelectorAll('.rc-obli-cell-date').forEach(function(el) {
       el.classList.remove('rc-date-2026','rc-date-2027','rc-date-mixed','rc-date-info');
       var txt = el.textContent || '';
-      var has26 = txt.includes('2026');
-      var has27 = txt.includes('2027');
-      if (has26 && has27) el.classList.add('rc-date-mixed');
-      else if (has26) el.classList.add('rc-date-2026');
-      else if (has27) el.classList.add('rc-date-2027');
+      var h26 = txt.includes('2026'), h27 = txt.includes('2027');
+      if (h26 && h27) el.classList.add('rc-date-mixed');
+      else if (h26) el.classList.add('rc-date-2026');
+      else if (h27) el.classList.add('rc-date-2027');
       else el.classList.add('rc-date-info');
     });
   }
   document.addEventListener('DOMContentLoaded', initDateBadges);
-  // Also patch rcShowPanel to re-run after panel switches
-  (function() {
-    var _orig = window.rcShowPanel;
-    if (typeof _orig === 'function') {
-      window.rcShowPanel = function() { _orig.apply(this, arguments); initDateBadges(); };
-    }
-  })();
-  // ──────────────────────────────────────────────────────────
-    </script>
+  (function(){ var _o=window.rcShowPanel; if(typeof _o==='function'){
+    window.rcShowPanel=function(){ _o.apply(this,arguments); initDateBadges(); }; } })();
+  </script>
 
 <div id="page-decisional" class="page">
   <button class="back-btn" onclick="history.back()">&#8592; Retour</button>
