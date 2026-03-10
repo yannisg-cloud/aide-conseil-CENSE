@@ -798,7 +798,19 @@ body {
 .starter .o-result-offer-name { background: #5A1A7A; }
 .essentiel .o-result-offer-name { background: #8B1A9A; }
 .avancee .o-result-offer-name { background: #F096F0; color: #2D0B3E; }
+#page-offres .avancee .o-result-offer-name { color: #2D0B3E !important; }
 
+/* ── Download CTA button ─── */
+.o-download-cta { text-align:center; margin-top:2rem; padding-bottom:0.5rem; }
+.o-download-btn {
+  display:inline-flex; align-items:center; gap:0.6rem;
+  background:linear-gradient(135deg,#5A1A7A,#8B1A9A);
+  color:#fff !important; text-decoration:none;
+  padding:0.75rem 1.6rem; border-radius:50px;
+  font-weight:700; font-size:0.9rem;
+  transition:all 0.2s; box-shadow:0 4px 14px rgba(90,26,122,0.35);
+}
+.o-download-btn:hover { transform:translateY(-2px); box-shadow:0 6px 22px rgba(90,26,122,0.5); }
 /* Update feature section header colors to CENSE */
 .o-piloter .o-feature-section-header { background: #5A1A7A; }
 .o-payer .o-feature-section-header { background: #8B1A9A; }
@@ -1109,12 +1121,21 @@ body {
 
   <div class="rc-hero">
     <h1>Mon client est-il concerné par<br><span>la facturation électronique ?</span></h1>
-    <p class="rc-hero-sub">Outil de référence rapide pour les RC et cellules : obligations par statut juridique, cas particuliers, e-invoicing vs e-reporting.</p>
-    <div class="rc-hero-dates">
-      <div class="rc-date-pill"><span class="rc-dot rc-dot-orange"></span>1er sept. 2026 — Réception obligatoire pour TOUS + Émission GE/ETI</div>
-      <div class="rc-date-pill"><span class="rc-dot rc-dot-blue"></span>1er sept. 2027 — Émission obligatoire PME/TPE/Micro</div>
-    </div>
+    
   </div>
+
+  
+  <div class="rc-info-card">
+          <h4>Calendrier de la réforme</h4>
+          <div class="rc-timeline-item">
+            <div class="rc-tl-dot orange">26</div>
+            <div class="rc-tl-text"><strong>1er septembre 2026</strong><span>Réception obligatoire pour TOUS. Émission + e-reporting pour GE et ETI.</span></div>
+          </div>
+          <div class="rc-timeline-item">
+            <div class="rc-tl-dot blue">27</div>
+            <div class="rc-tl-text"><strong>1er septembre 2027</strong><span>Émission obligatoire pour PME, TPE et micro-entreprises.</span></div>
+          </div>
+        </div>
 
   <div class="rc-question-bar">
     <div class="rc-question-bar-title">🎯 Accès rapide par profil</div>
@@ -1144,17 +1165,7 @@ body {
 
       <!-- VUE D'ENSEMBLE -->
       <div id="rc-panel-vue-ensemble" class="rc-panel active">
-        <div class="rc-info-card">
-          <h4>Calendrier de la réforme</h4>
-          <div class="rc-timeline-item">
-            <div class="rc-tl-dot orange">26</div>
-            <div class="rc-tl-text"><strong>1er septembre 2026</strong><span>Réception obligatoire pour TOUS. Émission + e-reporting pour GE et ETI.</span></div>
-          </div>
-          <div class="rc-timeline-item">
-            <div class="rc-tl-dot blue">27</div>
-            <div class="rc-tl-text"><strong>1er septembre 2027</strong><span>Émission obligatoire pour PME, TPE et micro-entreprises.</span></div>
-          </div>
-        </div>
+        
         <div class="rc-summary-table-wrap">
           <table>
             <thead><tr><th>Statut / Profil</th><th>Réception</th><th>Émission B2B</th><th>E-reporting</th><th>Cas particuliers</th></tr></thead>
@@ -1860,7 +1871,7 @@ const oClients = [
   { id: 'btp',          label: 'BTP / Artisans',                      icon: '🔨', offer: 'avancee' },
   { id: 'pharmacies',   label: 'Pharmacies',                          icon: '💊', offer: 'avancee' },
 ];
-const oBadgeLabel = { starter: 'Offre Starter', essentiel: 'Offre Essentiel', avancee: 'Offre Avancée' };
+const oBadgeLabel = { starter: 'Offre Basic', essentiel: 'Offre Essentiel', avancee: 'Offre Avancée' };
 const oBadgeClass = { starter: 'o-badge-starter', essentiel: 'o-badge-essentiel', avancee: 'o-badge-avancee' };
 
 const oOffers = {
@@ -1878,7 +1889,7 @@ const oOffers = {
     { cls: 'o-ventes', title: 'Gérer mes ventes', items: [{ text: 'Edition de devis et factures dans un facturier <strong>avancé</strong> (illimité)' }, { text: 'Interconnexion avec logiciel de facturation' }, { text: '<strong>Relances automatiques des impayés</strong>' }, { text: '<strong>Bons de commandes & livraisons et gestion simplifiée des ventes & des stocks</strong>' }] },
     { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }, { text: '<strong>Coffre-fort à valeur probante</strong>' }, { text: '<strong>Trousseau de mots de passe</strong>' }] }
   ]},
-  starter: { name: 'Offre Starter', sections: [
+  starter: { name: 'Offre Basic', sections: [
     { cls: 'o-piloter', title: 'Piloter en autonomie', items: [{ text: '<strong>Dashboard de suivi des factures</strong>' }] },
     { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Compte Pro (IBAN + 1ère carte)', offert: true }, { text: '<strong>Initiation de paiements / prélèvements</strong>' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }] },
     { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications' }] },
@@ -1896,6 +1907,18 @@ oClients.forEach(c => {
   oContainer.appendChild(div);
 });
 
+const oCtaUrls = {
+  starter:  'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_basic_générique_v1.pdf?csf=1&web=1&e=VDsqCN',
+  essentiel:'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_essentiel_générique_v1.pdf?csf=1&web=1&e=goF10S',
+  avancee:  'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_avancé_générique_v1.pdf?csf=1&web=1&e=GfkrUf',
+  pilotage: 'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_pilotage_générique_v1.pdf?csf=1&web=1&e=SFfFXv'
+};
+const oCtaLabels = {
+  starter:  'Offre Basic',
+  essentiel:'Offre Essentiel',
+  avancee:  'Offre Avancée',
+  pilotage: 'Offre Pilotage'
+};
 function oShowResult(client) {
   const offer = oOffers[client.offer];
   const cls = client.offer;
@@ -1914,7 +1937,8 @@ function oShowResult(client) {
       <div class="o-result-preconisation">Nous préconisons cette offre pour ce profil client</div>
     </div>
     <div class="o-features-grid">${sectionsHtml}</div>
-    ${client.id === 'agriculteurs' ? '<p style="margin-top:1rem;font-size:0.76rem;color:#7A7A7A;text-align:center;">* Sous conditions spécifiques au secteur agricole</p>' : ''}`;
+    ${client.id === 'agriculteurs' ? '<p style="margin-top:1rem;font-size:0.76rem;color:#7A7A7A;text-align:center;">* Sous conditions spécifiques au secteur agricole</p>' : ''}
+    <div class="o-download-cta"><a href="${oCtaUrls[cls]}" target="_blank" class="o-download-btn">📥 Télécharger la présentation – ${oCtaLabels[cls]}</a></div>`;
   document.getElementById('o-screen-home').classList.remove('active');
   document.getElementById('o-screen-result').classList.remove('active');
   document.getElementById('o-screen-result').classList.add('active');
