@@ -1383,6 +1383,11 @@ body {
 #page-offres .o-result-label { color: #C4A8D8 !important; }
 #page-offres .o-result-offer-name { color: #ED98F4 !important; }
 #page-offres .o-result-preconisation { background: rgba(255,255,255,0.05) !important; border-color: rgba(155,107,181,0.2) !important; }
+.o-result-icon { font-size: 2.8rem; display: block; margin-bottom: 0.6rem; line-height: 1; }
+.o-tier-indicator { display: flex; align-items: center; justify-content: center; gap: 0.35rem; margin-top: 1.1rem; flex-wrap: wrap; }
+.o-tier-dot { padding: 0.18rem 0.7rem; border-radius: 20px; color: #B09AC0; border: 1.5px solid #E8C0E8; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.02em; }
+.o-tier-dot.active { color: #300D35; background: #F0E0F8; border-color: #300D35; font-weight: 700; }
+.o-tier-sep { color: #D0A8D8; font-size: 0.6rem; }
 #page-offres .o-feature-section { background: rgba(255,255,255,0.04) !important; border: 1px solid rgba(155,107,181,0.15) !important; border-radius: 12px; }
 #page-offres .o-feature-section-header { color: #D4B8E8 !important; }
 #page-offres .o-feature-item { color: #E8D5F5 !important; }
@@ -1905,11 +1910,6 @@ function navigate(page, pushState) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (pushState) history.pushState({ page: page }, '', '#' + page);
 }
-        .o-result-icon { font-size: 2.8rem; display: block; margin-bottom: 0.6rem; line-height: 1; }
-        .o-tier-indicator { display: flex; align-items: center; justify-content: center; gap: 0.35rem; margin-top: 1.1rem; flex-wrap: wrap; }
-        .o-tier-dot { padding: 0.18rem 0.7rem; border-radius: 20px; color: #B09AC0; border: 1.5px solid #E8C0E8; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.02em; }
-        .o-tier-dot.active { color: #300D35; background: #F0E0F8; border-color: #300D35; font-weight: 700; }
-        .o-tier-sep { color: #D0A8D8; font-size: 0.6rem; }
 window.addEventListener('popstate', function(e) {
   if (e.state && e.state.page) navigate(e.state.page, false);
   else navigate('home', false);
