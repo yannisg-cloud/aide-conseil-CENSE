@@ -1388,6 +1388,8 @@ body {
 .o-tier-dot { padding: 0.18rem 0.7rem; border-radius: 20px; color: #B09AC0; border: 1.5px solid #E8C0E8; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.02em; }
 .o-tier-dot.active { color: #300D35; background: #F0E0F8; border-color: #300D35; font-weight: 700; }
 .o-tier-sep { color: #D0A8D8; font-size: 0.6rem; }
+.o-result-price { font-size: 1.35rem; font-weight: 700; color: #300D35; margin-top: 0.5rem; letter-spacing: -0.01em; }
+.o-result-price-note { font-size: 0.62rem; color: #9B6BB5; margin-top: 0.2rem; letter-spacing: 0.01em; }
 #page-offres .o-feature-section { background: rgba(255,255,255,0.04) !important; border: 1px solid rgba(155,107,181,0.15) !important; border-radius: 12px; }
 #page-offres .o-feature-section-header { color: #D4B8E8 !important; }
 #page-offres .o-feature-item { color: #E8D5F5 !important; }
@@ -1921,9 +1923,9 @@ history.replaceState({ page: 'home' }, '', location.href.split('#')[0] + '#home'
    OFFRES TOOL
 ══════════════════════════════ */
 const oClients = [
-  { id: 'sci-holding',  label: 'SCI / Holding',                      icon: '🏛️', offer: 'starter' },
-  { id: 'loueurs',      label: 'Loueurs en meublé',                   icon: '🏠', offer: 'starter' },
-  { id: 'sci-biens',    label: 'SCI avec plusieurs biens',            icon: '🏗️', offer: 'essentiel' },
+  { id: 'sci-holding', specialEssentielPrice: true, label: 'SCI / Holding',                      icon: '🏛️', offer: 'starter' },
+  { id: 'loueurs', specialEssentielPrice: true,      label: 'Loueurs en meublé',                   icon: '🏠', offer: 'starter' },
+  { id: 'sci-biens', specialEssentielPrice: true, label: 'SCI avec plusieurs biens',            icon: '🏗️', offer: 'essentiel' },
   { id: 'liberales',    label: 'Professions libérales',               icon: '⚖️', offer: 'essentiel' },
   { id: 'agriculteurs', label: 'Agriculteurs *',                      icon: '🌾', offer: 'essentiel' },
   { id: 'commerce',     label: 'Commerce de détail',                  icon: '🛍️', offer: 'avancee' },
@@ -1936,21 +1938,21 @@ const oBadgeLabel = { starter: 'Offre Basic', essentiel: 'Offre Essentiel', avan
 const oBadgeClass = { starter: 'o-badge-starter', essentiel: 'o-badge-essentiel', avancee: 'o-badge-avancee', pilotage: 'o-badge-pilotage' };
 
 const oOffers = {
-  avancee: { name: 'Offre Avancée', sections: [
+  avancee: { name: 'Offre Avancée', price: '49€ HT/mois', sections: [
     { cls: 'o-piloter', title: 'Piloter en autonomie', items: [{ text: 'Dashboard de suivi des factures' }] },
     { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Compte Pro (IBAN + 1ère carte)', offert: true }, { text: 'Initiation de paiements / prélèvements' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }, { text: '<strong>Collecte et paiement des notes de frais</strong>' }] },
     { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications, accès aux livrables de mon expert-comptable' }, { text: '<strong>2 accès invités</strong>' }] },
     { cls: 'o-ventes', title: 'Gérer mes ventes', items: [{ text: 'Edition de devis et factures dans un facturier <strong>avancé</strong> (illimité)' }, { text: 'Interconnexion avec logiciel de facturation' }, { text: '<strong>Relances automatiques des impayés</strong>' }, { text: '<strong>Bons de commandes & livraisons et gestion simplifiée des ventes & des stocks</strong>' }] },
     { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }, { text: '<strong>Coffre-fort à valeur probante</strong>' }, { text: '<strong>Trousseau de mots de passe</strong>' }] }
   ]},
-  essentiel: { name: 'Offre Essentiel', sections: [
+  essentiel: { name: 'Offre Essentiel', price: '29€ HT/mois*', sections: [
     { cls: 'o-piloter', title: 'Piloter en autonomie', items: [{ text: 'Dashboard de suivi des factures' }] },
     { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Compte Pro (IBAN + 1ère carte)', offert: true }, { text: 'Initiation de paiements / prélèvements' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }, { text: '<strong>Collecte et paiement des notes de frais</strong>' }] },
     { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications, accès aux livrables de mon expert-comptable' }, { text: '<strong>2 accès invités</strong>' }] },
     { cls: 'o-ventes', title: 'Gérer mes ventes', items: [{ text: 'Edition de devis et factures dans un facturier <strong>avancé</strong> (illimité)' }, { text: 'Interconnexion avec logiciel de facturation' }, { text: '<strong>Relances automatiques des impayés</strong>' }, { text: '<strong>Bons de commandes & livraisons et gestion simplifiée des ventes & des stocks</strong>' }] },
     { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }, { text: '<strong>Coffre-fort à valeur probante</strong>' }, { text: '<strong>Trousseau de mots de passe</strong>' }] }
   ]},
-  starter: { name: 'Offre Basic', sections: [
+  starter: { name: 'Offre Basic', price: 'Offert', sections: [
     { cls: 'o-piloter', title: 'Piloter en autonomie', items: [{ text: '<strong>Dashboard de suivi des factures</strong>' }] },
     { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Compte Pro (IBAN + 1ère carte)', offert: true }, { text: '<strong>Initiation de paiements / prélèvements</strong>' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }] },
     { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications' }] },
@@ -2020,6 +2022,8 @@ function oShowResult(client) {
       <div class="o-result-label">Recommandation pour</div>
       <div class="o-result-client">${client.label}</div>
       <div><span class="o-result-offer-name">${offer.name}</span></div>
+         <div class="o-result-price">${(client.specialEssentielPrice && cls==='essentiel') ? '9€ HT/mois' : (offer.price || '')}</div>
+         ${(client.specialEssentielPrice && cls==='essentiel') ? '<div class="o-result-price-note">* Tarif spécial SCI, Holding, BNC et LMNP</div>' : ''}
       <div class="o-tier-indicator">
         <span class="o-tier-dot ${cls==='starter'?'active':''}">Basic</span>
         <span class="o-tier-sep">›</span>
@@ -2383,6 +2387,21 @@ function decReset() {
         <div class="vid-card-title">Electronic Invoicing: Understanding the Essentials</div>
       </div>
     </div>
+  <div class="vid-card">
+    <div class="vid-embed">
+      <iframe
+        src="https://www.youtube.com/embed/2VCISr0wsSE"
+        title="Diriger plus simplement, décider plus vite : découvrez CENSE"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="vid-card-body">
+      <span class="vid-lang-badge vid-lang-fr">🇫🇷 Français</span>
+      <div class="vid-card-title">Diriger plus simplement, décider plus vite : découvrez CENSE</div>
+    </div>
+  </div>
+
 
   </div>
 </div>
