@@ -1950,7 +1950,7 @@ const oOffers = {
     { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }] }
   ]}
 };
-oOffers.pilotage = oOffers.avancee;
+oOffers.pilotage = Object.assign({}, oOffers.avancee, { name: 'Offre Pilotage' });
 
 const oContainer = document.getElementById('o-choices-container');
 oClients.forEach(c => {
