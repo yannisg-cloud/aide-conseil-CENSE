@@ -673,7 +673,8 @@ body {
 
 /* ── SCREENS ── */
 .o-screen { display: none; }
-.o-screen.active { display: block; }
+.o-screen.active { display: block; animation: oFadeIn 0.25s ease; }
+@keyframes oFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 #o-screen-home {
   max-width: 800px;
@@ -775,6 +776,7 @@ body {
 .o-result-header.starter::before { background: #5A1A7A; }
 .o-result-header.essentiel::before { background: #8B1A9A; }
 .o-result-header.avancee::before { background: #ED98F4; }
+        .o-result-header.pilotage::before { background: linear-gradient(90deg, #300D35 0%, #8B1A9A 100%); }
 
 .o-result-label {
   font-size: 0.7rem;
@@ -837,14 +839,15 @@ body {
 .o-offert-tag { display: inline-block; background: #FDE8E8; color: #ED98F4; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.12rem 0.4rem; border-radius: 4px; margin-left: 0.3rem; vertical-align: middle; }
 
 .o-back-btn {
-  display: flex; align-items: center; gap: 0.5rem;
-  background: none; border: 1.5px solid #E8C0E8;
-  padding: 0.55rem 1.1rem; border-radius: 40px;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: white; border: 1.5px solid #D0A8D8;
+  padding: 0.6rem 1.3rem; border-radius: 40px;
   font-family: 'Switzer', sans-serif; font-size: 0.83rem;
-  font-weight: 500; color: #7A5A8A; cursor: pointer;
-  transition: all 0.2s; margin-bottom: 1.3rem;
+  font-weight: 600; color: #300D35; cursor: pointer;
+  transition: all 0.2s; margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px rgba(48,13,53,0.1);
 }
-.o-back-btn:hover { background: white; color: #300D35; border-color: #300D35; }
+.o-back-btn:hover { background: #300D35; color: white; border-color: #300D35; transform: translateX(-3px); box-shadow: 0 4px 15px rgba(48,13,53,0.2); }
 
 /* ════════════════════════════════════════
    PAGE 2 — FACTURATION ÉLECTRONIQUE (RC)
@@ -1902,6 +1905,11 @@ function navigate(page, pushState) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (pushState) history.pushState({ page: page }, '', '#' + page);
 }
+        .o-result-icon { font-size: 2.8rem; display: block; margin-bottom: 0.6rem; line-height: 1; }
+        .o-tier-indicator { display: flex; align-items: center; justify-content: center; gap: 0.35rem; margin-top: 1.1rem; flex-wrap: wrap; }
+        .o-tier-dot { padding: 0.18rem 0.7rem; border-radius: 20px; color: #B09AC0; border: 1.5px solid #E8C0E8; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.02em; }
+        .o-tier-dot.active { color: #300D35; background: #F0E0F8; border-color: #300D35; font-weight: 700; }
+        .o-tier-sep { color: #D0A8D8; font-size: 0.6rem; }
 window.addEventListener('popstate', function(e) {
   if (e.state && e.state.page) navigate(e.state.page, false);
   else navigate('home', false);
@@ -1975,17 +1983,17 @@ const oCtaLabels = {
 };
 
 const oClientPrimaryUrls = {
-  btp:       'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Pr%C3%A9sentation_BTP_artisans_v1.pptx',
-  pharmacies:'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Pr%C3%A9sentation_Pharmacies_v1.pptx'
+  btp:       'https://0amaryllis0.sharepoint.com/sites/COGEPetMoi/CENSEetMoi/Forms/AllItems.aspx?FilterField1=TypeDocument&FilterValue1=Pr%C3%A9sentations%20g%C3%A9n%C3%A9riques%20des%20offres&FilterType1=Choice&FilterDisplay1=Pr%C3%A9sentations%20g%C3%A9n%C3%A9riques%20des%20offres&viewid=620db035%2D68a3%2D44b0%2Da336%2D98d3cef0fe8c&id=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi%2FOffre_pilotage_g%C3%A9n%C3%A9rique_v1%2Epdf&parent=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi',
+  pharmacies:'https://0amaryllis0.sharepoint.com/sites/COGEPetMoi/CENSEetMoi/Forms/AllItems.aspx?FilterField1=TypeDocument&FilterValue1=Pr%C3%A9sentations%20g%C3%A9n%C3%A9riques%20des%20offres&FilterType1=Choice&FilterDisplay1=Pr%C3%A9sentations%20g%C3%A9n%C3%A9riques%20des%20offres&viewid=620db035%2D68a3%2D44b0%2Da336%2D98d3cef0fe8c&id=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi%2FOffre_pilotage_g%C3%A9n%C3%A9rique_v1%2Epdf&parent=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi'
 };
 const oClientSecondCtaUrls = {
-  'sci-holding': 'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Presentation_SCI_v1',
-  'sci-biens':   'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Presentation_SCI_Essentiel_v1',
-  liberales:     'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Presentation_professions_liberales_v1',
-  agriculteurs:  'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Presentation_agriculteurs_v1',
-  grossiste:     'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Pr%C3%A9sentation_commerce_gros_v1',
-  btp:           'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_pilotage_g%C3%A9n%C3%A9rique_v1',
-  pharmacies:    'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_pilotage_g%C3%A9n%C3%A9rique_v1'
+  'sci-holding': 'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Presentation_SCI_v1.pdf?csf=1&web=1&e=F8DOnI',
+  'sci-biens':   'https://0amaryllis0.sharepoint.com/sites/COGEPetMoi/CENSEetMoi/Forms/AllItems.aspx?FilterField1=TypeDocument&FilterValue1=Offre%20Essentiel%20par%20typo&FilterType1=Choice&FilterDisplay1=Offre%20Essentiel%20par%20typo&viewid=620db035%2D68a3%2D44b0%2Da336%2D98d3cef0fe8c&id=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi%2FPresentation_SCI_Essentiel_v1%2Epdf&parent=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi',
+  liberales:     'https://0amaryllis0.sharepoint.com/sites/COGEPetMoi/CENSEetMoi/Forms/AllItems.aspx?FilterField1=TypeDocument&FilterValue1=Offre%20Essentiel%20par%20typo&FilterType1=Choice&FilterDisplay1=Offre%20Essentiel%20par%20typo&viewid=620db035%2D68a3%2D44b0%2Da336%2D98d3cef0fe8c&id=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi%2FPresentation_professions_liberales_v1%2Epdf&parent=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi',
+  agriculteurs:  'https://0amaryllis0.sharepoint.com/sites/COGEPetMoi/CENSEetMoi/Forms/AllItems.aspx?FilterField1=TypeDocument&FilterValue1=Offre%20Essentiel%20par%20typo&FilterType1=Choice&FilterDisplay1=Offre%20Essentiel%20par%20typo&viewid=620db035%2D68a3%2D44b0%2Da336%2D98d3cef0fe8c&id=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi%2FPresentation_agriculteurs_v1%2Epdf&parent=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi',
+  grossiste:     'https://0amaryllis0.sharepoint.com/sites/COGEPetMoi/CENSEetMoi/Forms/AllItems.aspx?FilterField1=TypeDocument&FilterValue1=Offre%20Avanc%C3%A9%20par%20typo&FilterType1=Choice&FilterDisplay1=Offre%20Avanc%C3%A9%20par%20typo&viewid=620db035%2D68a3%2D44b0%2Da336%2D98d3cef0fe8c&id=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi%2FPr%C3%A9sentation_commerce_gros_v1%2Epdf&parent=%2Fsites%2FCOGEPetMoi%2FCENSEetMoi',
+  btp:           'https://0amaryllis0.sharepoint.com/:p:/r/sites/COGEPetMoi/_layouts/15/Doc.aspx?sourcedoc=%7B906BDB31-FEB3-4C47-9BD3-D5201A785977%7D&file=Pr%C3%A9sentation_BTP_artisans_v1.pptx&action=edit&mobileredirect=true',
+  pharmacies:    'https://0amaryllis0.sharepoint.com/:p:/r/sites/COGEPetMoi/_layouts/15/Doc.aspx?sourcedoc=%7BB7B257E0-B090-4646-B75B-3DB0C87CF6DA%7D&file=Pr%C3%A9sentation_Pharmacies_v1.pptx&action=edit&mobileredirect=true'
 };
 const oClientSecondCtaLabels = {
   'sci-holding': 'Offre Basic pour les SCI',
@@ -1993,8 +2001,8 @@ const oClientSecondCtaLabels = {
   liberales:     'Offre Essentiel pour les professions libérales',
   agriculteurs:  'Offre Essentiel pour les agriculteurs',
   grossiste:     'Offre Avancée pour les Grossiste / Négoce / Commerce de gros',
-  btp:           'Offre Pilotage',
-  pharmacies:    'Offre Pilotage'
+  btp:           'Offre Pilotage pour les BTP / Artisans',
+  pharmacies:    'Offre Pilotage pour les Pharmacies'
 };
 function oShowResult(client) {
   const offer = oOffers[client.offer];
@@ -2008,10 +2016,19 @@ function oShowResult(client) {
     </div>`).join('');
   document.getElementById('o-result-content').innerHTML = `
     <div class="o-result-header ${cls}">
+      <span class="o-result-icon">${client.icon}</span>
       <div class="o-result-label">Recommandation pour</div>
       <div class="o-result-client">${client.label}</div>
       <div><span class="o-result-offer-name">${offer.name}</span></div>
-      <div class="o-result-preconisation">Nous préconisons cette offre pour ce profil client</div>
+      <div class="o-tier-indicator">
+        <span class="o-tier-dot ${cls==='starter'?'active':''}">Basic</span>
+        <span class="o-tier-sep">›</span>
+        <span class="o-tier-dot ${cls==='essentiel'?'active':''}">Essentiel</span>
+        <span class="o-tier-sep">›</span>
+        <span class="o-tier-dot ${cls==='avancee'?'active':''}">Avancée</span>
+        <span class="o-tier-sep">›</span>
+        <span class="o-tier-dot ${cls==='pilotage'?'active':''}">Pilotage</span>
+      </div>
     </div>
     <div class="o-download-cta">
       <a href="${oClientPrimaryUrls[client.id] || oCtaUrls[cls]}" target="_blank" class="o-download-btn">📥 Télécharger la présentation – ${oCtaLabels[cls]}</a>
