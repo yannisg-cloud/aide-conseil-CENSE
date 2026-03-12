@@ -746,6 +746,7 @@ body {
 .o-badge-starter { background: rgba(45,11,62,0.08); color: #5A1A7A; }
 .o-badge-essentiel { background: rgba(240,150,240,0.2); color: #8B1A9A; }
 .o-badge-avancee { background: #ED98F4; color: #300D35; }
+        .o-badge-pilotage { background: rgba(48,13,53,0.12); color: #300D35; font-weight:700; }
 
 /* Result screen */
 #o-screen-result {
@@ -804,7 +805,17 @@ body {
 #page-offres .avancee .o-result-offer-name { color: #300D35 !important; }
 
 /* ── Download CTA button ─── */
-.o-download-cta { text-align:center; margin-top:2rem; padding-bottom:0.5rem; }
+.o-download-cta { display:flex; flex-direction:column; align-items:center; gap:0.8rem; margin-top:2rem; padding-bottom:0.5rem; }
+.o-download-btn2 {
+  background: transparent;
+  color:#300D35 !important; text-decoration:none;
+  border: 2px solid #300D35;
+  display:inline-flex; align-items:center; gap:0.6rem;
+  padding:0.65rem 1.4rem; border-radius:50px;
+  font-weight:700; font-size:0.85rem; letter-spacing:0.02em;
+  transition:all 0.2s;
+}
+.o-download-btn2:hover { background:#300D35; color:#ED98F4 !important; transform:translateY(-2px); }
 .o-download-btn {
   display:inline-flex; align-items:center; gap:0.6rem;
   background:#300D35;
@@ -1910,11 +1921,11 @@ const oClients = [
   { id: 'commerce',     label: 'Commerce de détail',                  icon: '🛍️', offer: 'avancee' },
   { id: 'grossiste',    label: 'Grossiste / Négoce / Commerce de gros', icon: '📦', offer: 'avancee' },
   { id: 'chr',          label: 'CHR',                                 icon: '🍽️', offer: 'avancee' },
-  { id: 'btp',          label: 'BTP / Artisans',                      icon: '🔨', offer: 'avancee' },
-  { id: 'pharmacies',   label: 'Pharmacies',                          icon: '💊', offer: 'avancee' },
+  { id: 'btp',          label: 'BTP / Artisans',                      icon: '🔨', offer: 'pilotage' },
+  { id: 'pharmacies',   label: 'Pharmacies',                          icon: '💊', offer: 'pilotage' },
 ];
-const oBadgeLabel = { starter: 'Offre Basic', essentiel: 'Offre Essentiel', avancee: 'Offre Avancée' };
-const oBadgeClass = { starter: 'o-badge-starter', essentiel: 'o-badge-essentiel', avancee: 'o-badge-avancee' };
+const oBadgeLabel = { starter: 'Offre Basic', essentiel: 'Offre Essentiel', avancee: 'Offre Avancée', pilotage: 'Offre Pilotage' };
+const oBadgeClass = { starter: 'o-badge-starter', essentiel: 'o-badge-essentiel', avancee: 'o-badge-avancee', pilotage: 'o-badge-pilotage' };
 
 const oOffers = {
   avancee: { name: 'Offre Avancée', sections: [
@@ -1961,6 +1972,29 @@ const oCtaLabels = {
   avancee:  'Offre Avancée',
   pilotage: 'Offre Pilotage'
 };
+
+const oClientPrimaryUrls = {
+  btp:       'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Pr%C3%A9sentation_BTP_artisans_v1.pptx',
+  pharmacies:'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Pr%C3%A9sentation_Pharmacies_v1.pptx'
+};
+const oClientSecondCtaUrls = {
+  'sci-holding': 'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Presentation_SCI_v1',
+  'sci-biens':   'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Presentation_SCI_Essentiel_v1',
+  liberales:     'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Presentation_professions_liberales_v1',
+  agriculteurs:  'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Presentation_agriculteurs_v1',
+  grossiste:     'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Pr%C3%A9sentation_commerce_gros_v1',
+  btp:           'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_pilotage_g%C3%A9n%C3%A9rique_v1',
+  pharmacies:    'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_pilotage_g%C3%A9n%C3%A9rique_v1'
+};
+const oClientSecondCtaLabels = {
+  'sci-holding': 'Offre Basic pour les SCI',
+  'sci-biens':   'Offre Essentiel pour les SCI avec plusieurs biens',
+  liberales:     'Offre Essentiel pour les professions libérales',
+  agriculteurs:  'Offre Essentiel pour les agriculteurs',
+  grossiste:     'Offre Avancée pour les Grossiste / Négoce / Commerce de gros',
+  btp:           'Offre Pilotage',
+  pharmacies:    'Offre Pilotage'
+};
 function oShowResult(client) {
   const offer = oOffers[client.offer];
   const cls = client.offer;
@@ -1978,9 +2012,12 @@ function oShowResult(client) {
       <div><span class="o-result-offer-name">${offer.name}</span></div>
       <div class="o-result-preconisation">Nous préconisons cette offre pour ce profil client</div>
     </div>
+    <div class="o-download-cta">
+      <a href="${oClientPrimaryUrls[client.id] || oCtaUrls[cls]}" target="_blank" class="o-download-btn">📥 Télécharger la présentation – ${oCtaLabels[cls]}</a>
+      ${oClientSecondCtaUrls[client.id] ? '<a href="' + oClientSecondCtaUrls[client.id] + '" target="_blank" class="o-download-btn o-download-btn2">📥 Télécharger la présentation – ' + oClientSecondCtaLabels[client.id] + '</a>' : ''}
+    </div>
     <div class="o-features-grid">${sectionsHtml}</div>
-    ${client.id === 'agriculteurs' ? '<p style="margin-top:1rem;font-size:0.76rem;color:#7A7A7A;text-align:center;">* Sous conditions spécifiques au secteur agricole</p>' : ''}
-    <div class="o-download-cta"><a href="${oCtaUrls[cls]}" target="_blank" class="o-download-btn">📥 Télécharger la présentation – ${oCtaLabels[cls]}</a></div>`;
+    ${client.id === 'agriculteurs' ? '<p style="margin-top:1rem;font-size:0.76rem;color:#7A7A7A;text-align:center;">* Sous conditions spécifiques au secteur agricole</p>' : ''}`;
   document.getElementById('o-screen-home').classList.remove('active');
   document.getElementById('o-screen-result').classList.remove('active');
   document.getElementById('o-screen-result').classList.add('active');
