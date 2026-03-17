@@ -230,8 +230,8 @@ body {
 .home-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 2rem 1.8rem;
+  border-radius: 16px;
+  padding: 1.35rem 1.5rem;
   cursor: pointer;
   transition: all 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   text-align: left;
@@ -265,7 +265,7 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.25);
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.6rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -278,24 +278,24 @@ body {
 }
 
 .card-big-icon {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
   display: block;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
 }
 
 .card-title-main {
   font-family: 'Switzer', sans-serif;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: white;
   line-height: 1.3;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.35rem;
 }
 
 .card-desc {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.72);
   line-height: 1.5;
   font-weight: 300;
 }
@@ -304,12 +304,12 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-top: 1.5rem;
+  margin-top: 0.75rem;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.82);
   transition: color 0.2s;
 }
 .home-card:hover .card-cta { color: white; }
@@ -1153,82 +1153,79 @@ body {
 
     
 
-    <div class="home-cards" style="grid-template-columns: repeat(3, 1fr); max-width: 1000px;">
+    <div class="home-cards" style="grid-template-columns: repeat(4, 1fr); max-width: 1240px;">
 
-      <!-- CARD A -->
-      <div class="home-card home-card-a" onclick="navigate('offres')">
+      
+      <!-- CARD 01 – Guide RC -->
+      <div class="home-card home-card-g" onclick="navigate('guide')">
         <div class="card-number">01</div>
-        <span class="card-tag tag-a">Conseil offre</span>
-        <span class="card-big-icon">🗂️</span>
-        <div class="card-title-main">Conseiller l'offre la plus appropriée</div>
-        <p class="card-desc">Sélectionnez le profil de votre client et obtenez la recommandation d'offre avec le détail des fonctionnalités.</p>
-        <div class="card-cta">
-          Accéder à l'outil <span class="card-cta-arrow">→</span>
-        </div>
+        <span class="card-tag tag-g">Guide RC</span>
+        <span class="card-big-icon">🎯</span>
+        <div class="card-title-main">Conduire l'entretien client</div>
+        <p class="card-desc">Bonnes pratiques, formulations à privilégier et questions de découverte pour convaincre avec la bonne offre.</p>
+        <div class="card-cta">Accéder au guide <span class="card-cta-arrow">→</span></div>
       </div>
 
-      <!-- CARD B -->
+      <!-- CARD 02 – Réforme -->
       <div class="home-card home-card-b" onclick="navigate('facturation')">
         <div class="card-number">02</div>
         <span class="card-tag tag-b">Réforme 2026</span>
         <span class="card-big-icon">⚡</span>
-        <div class="card-title-main">Savoir si mon client est concerné par la réforme</div>
+        <div class="card-title-main">Vérifier l'impact de la réforme</div>
         <p class="card-desc">Cartographie complète des obligations par statut juridique : e-invoicing, e-reporting, calendrier, sanctions.</p>
-        <div class="card-cta">
-          Accéder à l'outil <span class="card-cta-arrow">→</span>
-        </div>
+        <div class="card-cta">Accéder à l'outil <span class="card-cta-arrow">→</span></div>
       </div>
 
-      <!-- CARD C -->
-      <div class="home-card home-card-c" onclick="navigate('comparaison')">
+      <!-- CARD 03 – Offres -->
+      <div class="home-card home-card-a" onclick="navigate('offres')">
         <div class="card-number">03</div>
+        <span class="card-tag tag-a">Conseil offre</span>
+        <span class="card-big-icon">🗂️</span>
+        <div class="card-title-main">Recommander l'offre selon le profil</div>
+        <p class="card-desc">Sélectionnez le profil de votre client et obtenez la recommandation avec le détail des fonctionnalités.</p>
+        <div class="card-cta">Accéder à l'outil <span class="card-cta-arrow">→</span></div>
+      </div>
+
+      <!-- CARD 04 – Décisionnel -->
+      <div class="home-card home-card-d" onclick="navigate('decisional')">
+        <div class="card-number">04</div>
+        <span class="card-tag tag-d">Aide au choix</span>
+        <span class="card-big-icon">&#127919;</span>
+        <div class="card-title-main">Identifier l'offre selon les besoins</div>
+        <p class="card-desc">Outil interactif pour identifier l'offre adaptée selon les besoins spécifiques du client.</p>
+        <div class="card-cta">Accéder à l'outil <span class="card-cta-arrow">→</span></div>
+      </div>
+
+      <!-- CARD 05 – Comparaison -->
+      <div class="home-card home-card-c" onclick="navigate('comparaison')">
+        <div class="card-number">05</div>
         <span class="card-tag tag-c">Tableau comparatif</span>
         <span class="card-big-icon">📊</span>
         <div class="card-title-main">Comparer les offres</div>
         <p class="card-desc">Basic, Essentiel, Avancé, Pilotage — visualisez les différences fonctionnelles et tarifaires en un coup d'œil.</p>
-        <div class="card-cta">
-          Accéder à l'outil <span class="card-cta-arrow">→</span>
-        </div>
+        <div class="card-cta">Accéder à l'outil <span class="card-cta-arrow">→</span></div>
       </div>
-        <div class="home-card home-card-d" onclick="navigate('decisional')">
-      <div class="card-number">04</div>
-      <span class="card-tag tag-d">Aide au choix</span>
-      <span class="card-big-icon">&#127919;</span>
-      <div class="card-title-main">Choisir la bonne offre</div>
-      <p class="card-desc">Outil interactif pour identifier l’offre adaptée selon les besoins du client</p>
-      <div class="card-cta">Accéder à l’outil <span class="card-cta-arrow">→</span></div>
-    </div>
 
-    
-    <!-- CARD E -->
-    <div class="home-card home-card-e" onclick="window.open('https://0amaryllis0.sharepoint.com/sites/COGEPetMoi/SitePages/CENSEetMoiSupportsCommunication.aspx','_blank')">
-      <div class="card-number">05</div>
-      <span class="card-tag tag-e">Communication</span>
-      <span class="card-big-icon">📣</span>
-      <div class="card-title-main">Accéder aux outils de communication et marketing sur CENSE&amp;moi</div>
-      <p class="card-desc">Retrouvez les supports de communication et marketing disponibles sur la plateforme CENSE&amp;moi.</p>
-      <div class="card-cta">Accéder aux supports <span class="card-cta-arrow">→</span></div>
-    </div>
+      <!-- CARD 06 – Vidéos -->
+      <div class="home-card home-card-f" onclick="navigate('videos')">
+        <div class="card-number">06</div>
+        <span class="card-tag tag-f">Vidéos</span>
+        <span class="card-big-icon">🎬</span>
+        <div class="card-title-main">Voir les vidéos explicatives</div>
+        <p class="card-desc">Deux vidéos (FR &amp; EN) pour présenter simplement la réforme et les bénéfices de CENSE à vos clients.</p>
+        <div class="card-cta">Accéder aux vidéos <span class="card-cta-arrow">→</span></div>
+      </div>
 
-    <!-- CARD F -->
-    <div class="home-card home-card-f" onclick="navigate('videos')">
-      <div class="card-number">06</div>
-      <span class="card-tag tag-f">Vidéos</span>
-      <span class="card-big-icon">🎬</span>
-      <div class="card-title-main">Expliquer la réforme de la facture électronique à mon client</div>
-      <p class="card-desc">Deux vidéos explicatives (FR &amp; EN) pour présenter simplement la réforme à vos clients.</p>
-      <div class="card-cta">Accéder aux vidéos <span class="card-cta-arrow">→</span></div>
-    </div>
+      <!-- CARD 07 – CENSE&moi -->
+      <div class="home-card home-card-e" onclick="window.open('https://0amaryllis0.sharepoint.com/sites/COGEPetMoi/SitePages/CENSEetMoiSupportsCommunication.aspx','_blank')">
+        <div class="card-number">07</div>
+        <span class="card-tag tag-e">Communication</span>
+        <span class="card-big-icon">📣</span>
+        <div class="card-title-main">Accéder aux supports CENSE&amp;moi</div>
+        <p class="card-desc">Retrouvez les supports de communication et marketing disponibles sur la plateforme CENSE&amp;moi.</p>
+        <div class="card-cta">Accéder aux supports <span class="card-cta-arrow">→</span></div>
+      </div>
 
-    <!-- CARD G -->
-    <div class="home-card home-card-g" onclick="navigate('guide')">
-      <div class="card-number">07</div>
-      <span class="card-tag tag-g">Guide RC</span>
-      <span class="card-big-icon">🎯</span>
-      <div class="card-title-main">Préparer et conduire mon entretien client</div>
-      <p class="card-desc">Bonnes pratiques, formulations à privilégier et questions de découverte pour convaincre avec la bonne offre.</p>
-      <div class="card-cta">Accéder au guide <span class="card-cta-arrow">→</span></div>
-    </div>
 </div>
 
     <div class="home-features">
