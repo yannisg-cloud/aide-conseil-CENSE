@@ -975,17 +975,107 @@ body {
 .rc-tl-text span { font-size: 0.75rem; color: #7A5A8A; }
 
 /* ════════════════════════════════════════
+   HAMBURGER NAV MOBILE
+════════════════════════════════════════ */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0.4rem;
+  border: none;
+  background: none;
+  z-index: 1001;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 52px; left: 0; right: 0;
+  background: rgba(45,11,62,0.98);
+  backdrop-filter: blur(12px);
+  padding: 0.8rem 1rem 1rem;
+  z-index: 999;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu .nav-link {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+}
+.nav-mobile-menu .nav-link:hover,
+.nav-mobile-menu .nav-link.active {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* ════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .home-cards { grid-template-columns: 1fr; }
-  .home-features { flex-wrap: wrap; gap: 1rem; }
-  .rc-main-layout { grid-template-columns: 1fr; }
+  /* Nav */
+  .nav-hamburger { display: flex; }
+  .nav-links { display: none; }
+  .global-nav { padding: 0 1rem; }
+
+  /* Accueil */
+  .home-content { padding: 3.5rem 1.2rem 3rem; }
+  .home-cards { grid-template-columns: 1fr !important; max-width: 100% !important; }
+  .home-features { flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; padding-top: 1.5rem; }
+  .home-feature { font-size: 0.74rem; }
+
+  /* Facturation page */
+  .rc-hero { padding: 1.5rem 1rem 1rem; }
+  .rc-question-bar { margin: 0.8rem 1rem; }
+  .rc-main-layout { grid-template-columns: 1fr; padding: 0 1rem; }
   .rc-sidebar { position: static; }
-  .rc-obli-matrix { grid-template-columns: 1fr 1fr; }
+  .rc-topbar { padding: 0.5rem 1rem; flex-wrap: wrap; gap: 0.3rem; }
+
+  /* Grids */
+  .rc-obli-matrix { grid-template-columns: 1fr 1fr; padding: 0.8rem; }
   .rc-case-row { grid-template-columns: 1fr; }
   .rc-sanctions { grid-template-columns: 1fr 1fr; }
-  .nav-links .nav-link { font-size: 0.68rem; padding: 0.3rem 0.6rem; }
+
+  /* Tables */
+  .rc-summary-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .rc-summary-table-wrap table { min-width: 480px; }
+
+  /* Comparaison des offres : scroll horizontal */
+  .cmp-wrapper { padding: 1.5rem 0.8rem 4rem; }
+  .cmp-pricing-strip,
+  .cmp-section-header,
+  .cmp-row { min-width: 600px; }
+  .cmp-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .cmp-extras { grid-template-columns: 1fr; }
+
+  /* Offres page */
+  #o-screen-home { padding: 0.8rem 1rem 3rem; }
+  #o-screen-result { padding: 0 1rem 3rem; }
+  .o-result-header { padding: 1.4rem 1rem; }
+}
+
+@media (max-width: 480px) {
+  .home-content { padding: 3rem 1rem 2.5rem; }
+  .o-choices-grid { grid-template-columns: 1fr 1fr; }
+  .rc-obli-matrix { grid-template-columns: 1fr; }
+  .rc-sanctions { grid-template-columns: 1fr; }
+  .rc-topbar { flex-direction: column; align-items: flex-start; }
+  .cmp-header { padding: 1.5rem 1rem 1.2rem; }
 }
 
     /* ── Card D ─── */
@@ -1025,7 +1115,19 @@ body {
     <div class="nav-link" id="nav-decisional" onclick="navigate('decisional')">Aide au choix</div>
     <div class="nav-link" id="nav-videos" onclick="navigate('videos')">Vidéos explicatives</div>
   </div>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <div class="nav-link" onclick="navigate('home');closeMobileMenu()">Accueil</div>
+  <div class="nav-link" onclick="navigate('offres');closeMobileMenu()">Recommander une offre</div>
+  <div class="nav-link" onclick="navigate('facturation');closeMobileMenu()">Facturation électronique</div>
+  <div class="nav-link" onclick="navigate('comparaison');closeMobileMenu()">Comparer les offres</div>
+  <div class="nav-link" onclick="navigate('decisional');closeMobileMenu()">Aide au choix</div>
+  <div class="nav-link" onclick="navigate('videos');closeMobileMenu()">Vidéos explicatives</div>
+</div>
 
 <!-- ══════════════════════════════════════════════════════
      PAGE 0 — ACCUEIL
@@ -1047,7 +1149,7 @@ body {
 
     
 
-    <div class="home-cards" style="grid-template-columns: 1fr 1fr 1fr; max-width: 1000px;">
+    <div class="home-cards" style="grid-template-columns: repeat(3, 1fr); max-width: 1000px;">
 
       <!-- CARD A -->
       <div class="home-card home-card-a" onclick="navigate('offres')">
@@ -1693,6 +1795,9 @@ body {
 
   <div class="cmp-wrapper">
 
+    <!-- TABLE SCROLL WRAPPER (pour mobile) -->
+    <div class="cmp-table-scroll">
+
     <!-- PRICING STRIP (sticky) -->
     <div class="cmp-pricing-strip">
       <div class="cmp-pricing-label"><span>Fonctionnalités</span></div>
@@ -1883,6 +1988,8 @@ body {
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
     </div>
 
+    </div><!-- end .cmp-table-scroll -->
+
     <!-- ── OPTIONS & MARKETPLACE ── -->
     <div class="cmp-extras">
       <div class="cmp-extra-box">
@@ -1897,6 +2004,18 @@ body {
 </div>
 
 <script>
+/* ── MOBILE MENU ── */
+function toggleMobileMenu() {
+  const menu = document.getElementById('nav-mobile-menu');
+  const btn  = document.getElementById('nav-hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('nav-mobile-menu').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+}
+
 /* ══════════════════════════════
    NAVIGATION BETWEEN PAGES
 ══════════════════════════════ */
