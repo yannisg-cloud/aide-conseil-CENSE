@@ -2042,19 +2042,19 @@ history.replaceState({ page: 'home' }, '', location.href.split('#')[0] + '#home'
    OFFRES TOOL
 ══════════════════════════════ */
 const oClients = [
-  { id: 'sci-holding', specialEssentielPrice: true, label: 'SCI / Holding',                      icon: '🏛️', offer: 'starter' },
-  { id: 'loueurs', specialEssentielPrice: true,      label: 'Loueurs en meublé',                   icon: '🏠', offer: 'starter' },
-  { id: 'sci-biens', specialEssentielPrice: true, label: 'SCI avec plusieurs biens',            icon: '🏗️', offer: 'essentiel' },
-  { id: 'liberales',    label: 'Professions libérales',               icon: '⚖️', offer: 'essentiel' },
-  { id: 'agriculteurs', label: 'Agriculteurs *',                      icon: '🌾', offer: 'essentiel' },
-  { id: 'commerce',     label: 'Commerce de détail',                  icon: '🛍️', offer: 'avancee' },
+  { id: 'sci-holding', label: 'SCI / Holding',                         icon: '🏛️', offer: 'essentiel9' },
+  { id: 'loueurs',     label: 'Loueurs en meublé (LMNP)',              icon: '🏠', offer: 'essentiel9' },
+  { id: 'sci-biens',   label: 'SCI avec plusieurs biens',              icon: '🏗️', offer: 'essentiel9' },
+  { id: 'liberales',   label: 'Professions libérales (BNC)',           icon: '⚖️', offer: 'essentiel9' },
+  { id: 'agriculteurs', label: 'Agriculteurs *',                       icon: '🌾', offer: 'essentiel' },
+  { id: 'commerce',     label: 'Commerce de détail',                   icon: '🛍️', offer: 'avancee' },
   { id: 'grossiste',    label: 'Grossiste / Négoce / Commerce de gros', icon: '📦', offer: 'avancee' },
-  { id: 'chr',          label: 'CHR',                                 icon: '🍽️', offer: 'avancee' },
-  { id: 'btp',          label: 'BTP / Artisans',                      icon: '🔨', offer: 'pilotage' },
-  { id: 'pharmacies',   label: 'Pharmacies',                          icon: '💊', offer: 'pilotage' },
+  { id: 'chr',          label: 'CHR',                                  icon: '🍽️', offer: 'avancee' },
+  { id: 'btp',          label: 'BTP / Artisans',                       icon: '🔨', offer: 'pilotage' },
+  { id: 'pharmacies',   label: 'Pharmacies',                           icon: '💊', offer: 'pilotage' },
 ];
-const oBadgeLabel = { starter: 'Offre Basic', essentiel: 'Offre Essentiel', avancee: 'Offre Avancée', pilotage: 'Offre Pilotage' };
-const oBadgeClass = { starter: 'o-badge-starter', essentiel: 'o-badge-essentiel', avancee: 'o-badge-avancee', pilotage: 'o-badge-pilotage' };
+const oBadgeLabel = { starter: 'Offre Basic', essentiel: 'Offre Essentiel', essentiel9: 'Offre Essentiel 9€', avancee: 'Offre Avancée', pilotage: 'Offre Pilotage' };
+const oBadgeClass = { starter: 'o-badge-starter', essentiel: 'o-badge-essentiel', essentiel9: 'o-badge-essentiel', avancee: 'o-badge-avancee', pilotage: 'o-badge-pilotage' };
 
 const oOffers = {
   avancee: { name: 'Offre Avancée', price: '49€ HT/mois', sections: [
@@ -2064,11 +2064,17 @@ const oOffers = {
     { cls: 'o-ventes', title: 'Gérer mes ventes', items: [{ text: 'Edition de devis et factures dans un facturier <strong>avancé</strong> (illimité)' }, { text: 'Interconnexion avec logiciel de facturation' }, { text: '<strong>Relances automatiques des impayés</strong>' }, { text: '<strong>Bons de commandes & livraisons et gestion simplifiée des ventes & des stocks</strong>' }] },
     { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }, { text: '<strong>Coffre-fort à valeur probante</strong>' }, { text: '<strong>Trousseau de mots de passe</strong>' }] }
   ]},
-  essentiel: { name: 'Offre Essentiel', price: '29€ HT/mois*', sections: [
+  essentiel: { name: 'Offre Essentiel', price: '29€ HT/mois', sections: [
     { cls: 'o-piloter', title: 'Piloter en autonomie', items: [{ text: 'Dashboard de suivi des factures' }] },
     { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Compte Pro (IBAN + 1ère carte)', offert: true }, { text: 'Initiation de paiements / prélèvements' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }, { text: '<strong>Collecte et paiement des notes de frais</strong>' }] },
-    { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications, accès aux livrables de mon expert-comptable' }, { text: '<strong>2 accès invités</strong>' }] },
+    { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications, accès aux livrables de mon expert-comptable' }, { text: '<strong>2 accès invités</strong> (accès supplémentaire : 5€)' }] },
     { cls: 'o-ventes', title: 'Gérer mes ventes', items: [{ text: 'Edition de devis et factures dans un facturier <strong>avancé</strong> (illimité)' }, { text: 'Interconnexion avec logiciel de facturation' }, { text: '<strong>Relances automatiques des impayés</strong>' }, { text: '<strong>Bons de commandes & livraisons et gestion simplifiée des ventes & des stocks</strong>' }] },
+    { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }, { text: '<strong>Coffre-fort à valeur probante</strong>' }, { text: '<strong>Trousseau de mots de passe</strong>' }] }
+  ]},
+  essentiel9: { name: 'Offre Essentiel', price: '9€ HT/mois', sections: [
+    { cls: 'o-piloter', title: 'Piloter en autonomie', items: [{ text: 'Dashboard de suivi des factures' }] },
+    { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications, accès aux livrables de mon expert-comptable' }, { text: '<strong>2 accès invités</strong> (accès supplémentaire : 5€)' }] },
+    { cls: 'o-ventes', title: 'Gérer mes ventes', items: [{ text: 'Edition de devis et factures dans un facturier simple (illimité)' }, { text: 'Interconnexion avec logiciel de facturation' }] },
     { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }, { text: '<strong>Coffre-fort à valeur probante</strong>' }, { text: '<strong>Trousseau de mots de passe</strong>' }] }
   ]},
   starter: { name: 'Offre Basic', price: 'Offert', sections: [
@@ -2093,12 +2099,14 @@ oClients.forEach(c => {
 const oCtaUrls = {
   starter:  'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_basic_générique_v1.pdf?csf=1&web=1&e=VDsqCN',
   essentiel:'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_essentiel_générique_v1.pdf?csf=1&web=1&e=goF10S',
+  essentiel9:'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_essentiel_générique_v1.pdf?csf=1&web=1&e=goF10S',
   avancee:  'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_avancé_générique_v1.pdf?csf=1&web=1&e=GfkrUf',
   pilotage: 'https://0amaryllis0.sharepoint.com/:b:/r/sites/COGEPetMoi/CENSEetMoi/Offre_pilotage_générique_v1.pdf?csf=1&web=1&e=SFfFXv'
 };
 const oCtaLabels = {
   starter:  'Offre Basic',
   essentiel:'Offre Essentiel',
+  essentiel9:'Offre Essentiel',
   avancee:  'Offre Avancée',
   pilotage: 'Offre Pilotage'
 };
@@ -2117,7 +2125,7 @@ const oClientSecondCtaUrls = {
   pharmacies:    'https://0amaryllis0.sharepoint.com/:p:/r/sites/COGEPetMoi/_layouts/15/Doc.aspx?sourcedoc=%7BB7B257E0-B090-4646-B75B-3DB0C87CF6DA%7D&file=Pr%C3%A9sentation_Pharmacies_v1.pptx&action=edit&mobileredirect=true'
 };
 const oClientSecondCtaLabels = {
-  'sci-holding': 'Offre Basic pour les SCI',
+  'sci-holding': 'Offre Essentiel pour les SCI / Holding',
   'sci-biens':   'Offre Essentiel pour les SCI avec plusieurs biens',
   liberales:     'Offre Essentiel pour les professions libérales',
   agriculteurs:  'Offre Essentiel pour les agriculteurs',
@@ -2141,12 +2149,12 @@ function oShowResult(client) {
       <div class="o-result-label">Recommandation pour</div>
       <div class="o-result-client">${client.label}</div>
       <div><span class="o-result-offer-name">${offer.name}</span></div>
-         <div class="o-result-price">${(client.specialEssentielPrice && cls==='essentiel') ? '9€ HT/mois' : (offer.price || '')}</div>
-         ${(client.specialEssentielPrice && cls==='essentiel') ? '<div class="o-result-price-note">* Tarif spécial SCI, Holding, BNC et LMNP</div>' : ''}
+         <div class="o-result-price">${offer.price || ''}</div>
+         ${cls === 'essentiel9' ? '<div class="o-result-price-note">* Tarif spécial SCI, Holding, BNC et LMNP</div>' : ''}
       <div class="o-tier-indicator">
         <span class="o-tier-dot ${cls==='starter'?'active':''}">Basic</span>
         <span class="o-tier-sep">›</span>
-        <span class="o-tier-dot ${cls==='essentiel'?'active':''}">Essentiel</span>
+        <span class="o-tier-dot ${(cls==='essentiel'||cls==='essentiel9')?'active':''}">Essentiel</span>
         <span class="o-tier-sep">›</span>
         <span class="o-tier-dot ${cls==='avancee'?'active':''}">Avancée</span>
         <span class="o-tier-sep">›</span>
