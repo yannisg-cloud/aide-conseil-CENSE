@@ -1926,13 +1926,6 @@ body {
     <div class="cmp-section-header"><div class="cmp-section-title">Payer / Encaisser</div></div>
 
     <div class="cmp-row">
-      <div class="cmp-feature-name">Compte Pro (IBAN + 1ère carte)</div>
-      <div class="cmp-cell"><span class="cmp-no">—</span></div>
-      <div class="cmp-cell"><span class="cmp-tag-offert">Offert</span></div>
-      <div class="cmp-cell"><span class="cmp-tag-offert">Offert</span></div>
-      <div class="cmp-cell"><span class="cmp-tag-offert">Offert</span></div>
-    </div>
-    <div class="cmp-row">
       <div class="cmp-feature-name">Initiation de paiements / prélèvements</div>
       <div class="cmp-cell"><span class="cmp-no">—</span></div>
       <div class="cmp-cell"><span class="cmp-yes">✓</span></div>
@@ -2128,14 +2121,14 @@ const oBadgeClass = { starter: 'o-badge-starter', essentiel: 'o-badge-essentiel'
 const oOffers = {
   avancee: { name: 'Offre Avancée', price: '49€ HT/mois', sections: [
     { cls: 'o-piloter', title: 'Piloter en autonomie', items: [{ text: 'Dashboard de suivi des factures' }] },
-    { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Compte Pro (IBAN + 1ère carte)', offert: true }, { text: 'Initiation de paiements / prélèvements' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }, { text: '<strong>Collecte et paiement des notes de frais</strong>' }] },
+    { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Initiation de paiements / prélèvements' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }, { text: '<strong>Collecte et paiement des notes de frais</strong>' }] },
     { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications, accès aux livrables de mon expert-comptable' }, { text: '<strong>2 accès invités</strong>' }] },
     { cls: 'o-ventes', title: 'Gérer mes ventes', items: [{ text: 'Edition de devis et factures dans un facturier <strong>avancé</strong> (illimité)' }, { text: 'Interconnexion avec logiciel de facturation' }, { text: '<strong>Relances automatiques des impayés</strong>' }, { text: '<strong>Bons de commandes & livraisons et gestion simplifiée des ventes & des stocks</strong>' }] },
     { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }, { text: '<strong>Coffre-fort à valeur probante</strong>' }, { text: '<strong>Trousseau de mots de passe</strong>' }] }
   ]},
   essentiel: { name: 'Offre Essentiel', price: '29€ HT/mois', sections: [
     { cls: 'o-piloter', title: 'Piloter en autonomie', items: [{ text: 'Dashboard de suivi des factures' }] },
-    { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Compte Pro (IBAN + 1ère carte)', offert: true }, { text: 'Initiation de paiements / prélèvements' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }, { text: '<strong>Collecte et paiement des notes de frais</strong>' }] },
+    { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Initiation de paiements / prélèvements' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }, { text: '<strong>Collecte et paiement des notes de frais</strong>' }] },
     { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications, accès aux livrables de mon expert-comptable' }, { text: '<strong>2 accès invités</strong> (accès supplémentaire : 5€)' }] },
     { cls: 'o-ventes', title: 'Gérer mes ventes', items: [{ text: 'Edition de devis et factures dans un facturier <strong>avancé</strong> (illimité)' }, { text: 'Interconnexion avec logiciel de facturation' }, { text: '<strong>Relances automatiques des impayés</strong>' }, { text: '<strong>Bons de commandes & livraisons et gestion simplifiée des ventes & des stocks</strong>' }] },
     { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }, { text: '<strong>Coffre-fort à valeur probante</strong>' }, { text: '<strong>Trousseau de mots de passe</strong>' }] }
@@ -2148,7 +2141,7 @@ const oOffers = {
   ]},
   starter: { name: 'Offre Basic', price: 'Offert', sections: [
     { cls: 'o-piloter', title: 'Piloter en autonomie', items: [{ text: '<strong>Dashboard de suivi des factures</strong>' }] },
-    { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: 'Compte Pro (IBAN + 1ère carte)', offert: true }, { text: '<strong>Initiation de paiements / prélèvements</strong>' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }] },
+    { cls: 'o-payer', title: 'Payer / Encaisser', items: [{ text: '<strong>Initiation de paiements / prélèvements</strong>' }, { text: 'Encaissement / Décaissement / Suivi de caisse' }] },
     { cls: 'o-collaborer', title: 'Collaborer', items: [{ text: '1 accès utilisateur pour le/la dirigeant(e)' }, { text: 'Messagerie, notifications' }] },
     { cls: 'o-ventes', title: 'Gérer mes ventes', items: [{ text: 'Edition de devis et factures dans un facturier simple <strong>(3 / mois)</strong>' }, { text: 'Interconnexion avec logiciel de facturation' }] },
     { cls: 'o-conformite', title: 'Ma plateforme pour être conforme et serein', items: [{ text: 'Envoi / Réception de factures (e-reporting / e-invoicing)' }, { text: 'Centralisation des factures et partage à mon expert-comptable' }, { text: 'Agrégation bancaire' }] }
@@ -2449,11 +2442,6 @@ function decReset() {
         <label class="dec-item">
           <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
           <span class="dec-item-label">Initiation de paiements et prélèvements</span>
-          <span class="dec-feat-badge essentiel">Essentiel</span>
-        </label>
-        <label class="dec-item">
-          <input type="checkbox" data-offer="essentiel" onchange="updateDecision()">
-          <span class="dec-item-label">Compte Pro inclus (IBAN + 1ère carte)</span>
           <span class="dec-feat-badge essentiel">Essentiel</span>
         </label>
         <label class="dec-item">
