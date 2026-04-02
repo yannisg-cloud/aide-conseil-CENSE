@@ -1070,15 +1070,16 @@ body {
   .o-result-header { padding: 1.4rem 1rem; }
 
   /* Choisir la bonne offre — page décisionnelle */
-  #page-decisional { padding: 0.5rem 0.8rem 3rem; }
+  #page-decisional { padding: 0.5rem 0.8rem 3rem !important; }
   .dec-header { padding: 1.2rem 1rem 0.5rem; }
   .dec-header h2 { font-size: 1.2rem; }
   .dec-sticky { padding: 0.7rem 1rem; gap: 0.8rem; }
-  .dec-progress { display: none; }
-  .dec-groups { grid-template-columns: 1fr; padding: 0.8rem 0.5rem; }
+  .dec-progress { display: none !important; }
+  .dec-groups { grid-template-columns: 1fr !important; padding: 0.8rem 0.5rem !important; gap: 0.7rem !important; }
   .dec-reset { padding: 0 0.5rem 0.5rem; }
-  .dec-item { padding: 0.65rem 1rem; }
-  .dec-feat-badge { font-size: 0.62rem; padding: 0.12rem 0.4rem; }
+  .dec-item { padding: 0.65rem 1rem; min-height: 44px; }
+  .dec-feat-badge { font-size: 0.62rem; padding: 0.12rem 0.4rem; white-space: normal; }
+  .dec-item-label { word-break: break-word; }
 }
 
 @media (max-width: 480px) {
@@ -1312,6 +1313,7 @@ body {
     <div class="rc-question-tabs">
       <button class="rc-qtab active" onclick="rcShowPanel('vue-ensemble')">Vue d'ensemble</button>
       <button class="rc-qtab" onclick="rcShowPanel('sci')">SCI</button>
+      <button class="rc-qtab" onclick="rcShowPanel('associations')">Associations</button>
       <button class="rc-qtab" onclick="rcShowPanel('holding')">Holding</button>
       <button class="rc-qtab" onclick="rcShowPanel('lmnp')">Loueurs meublés</button>
       <button class="rc-qtab" onclick="rcShowPanel('bnc')">BNC / Prof. libérales</button>
@@ -1612,6 +1614,34 @@ body {
             <div class="rc-alert-box info" style="margin-top:0.5rem"><span class="rc-alert-icon">💬</span><div><strong>Script RC :</strong> « La réforme dépend de la situation TVA de votre SCI. Si votre SCI est totalement hors champ (ex. SCI familiale, bien mis à disposition gratuite des associés), vous n'êtes pas concerné du tout. Si votre SCI loue des locaux nus à usage d'habitation ou des locaux nus professionnels sans option TVA, vous n'avez pas à émettre de factures électroniques, mais vous devrez être en capacité de les recevoir dès septembre 2026. Si votre SCI loue des locaux professionnels aménagés, avec prestations para-hôtelières ou avec option TVA, toutes les obligations s'appliquent dès septembre 2026. »</div></div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- ASSOCIATIONS -->
+      <div id="rc-panel-associations" class="rc-panel">
+        <div class="rc-status-card">
+          <div class="rc-status-card-header"><span class="rc-big-icon">🤝</span><div class="rc-status-card-header-text"><h2>Associations</h2><p>Loi 1901 — Le régime TVA détermine tout</p></div></div>
+
+          <div class="rc-obli-matrix">
+            <div class="rc-obli-cell" style="background:#FEE8E8"><div class="rc-obli-cell-title" style="color:#B91C1C">Réception</div><span class="rc-verdict rc-v-no">✗ Non fiscalisée</span><div class="rc-obli-cell-date">Hors champ total</div></div>
+            <div class="rc-obli-cell" style="background:#FEE8E8"><div class="rc-obli-cell-title" style="color:#B91C1C">Émission B2B</div><span class="rc-verdict rc-v-no">✗ Non</span><div class="rc-obli-cell-date">Hors champ</div></div>
+            <div class="rc-obli-cell" style="background:#FEE8E8"><div class="rc-obli-cell-title" style="color:#B91C1C">E-reporting</div><span class="rc-verdict rc-v-no">✗ Non</span><div class="rc-obli-cell-date">Hors champ</div></div>
+          </div>
+
+          <div class="rc-details-section">
+            <div class="rc-alert-box warn"><span class="rc-alert-icon">⚠️</span><div><strong>Principe fondamental :</strong> L'association loi 1901 <strong>non fiscalisée</strong> (non assujettie à la TVA) n'est <strong>pas concernée par la réforme — ni en émission ni en réception</strong>. Source : E. Frizzi, COGEP, mars 2026.</div></div>
+          </div>
+
+          <div class="rc-details-section">
+            <h3>Cas par cas</h3>
+            <div class="rc-case-row"><div><div class="rc-case-row-label">Association loi 1901 non fiscalisée</div><div class="rc-case-row-sub">Non assujettie TVA — ex. association sportive, culturelle, caritative</div></div><span class="rc-verdict rc-v-no">Réception ✗</span><span class="rc-verdict rc-v-no">Émission ✗</span><span class="rc-verdict rc-v-no">E-reporting ✗</span></div>
+            <div class="rc-case-row"><div><div class="rc-case-row-label">Association à but lucratif / objet commercial</div><div class="rc-case-row-sub">Assujettie TVA — même régime qu'une entreprise</div></div><span class="rc-verdict rc-v-yes">Réception ✓</span><span class="rc-verdict rc-v-yes">Émission ✓</span><span class="rc-verdict rc-v-yes">E-reporting ✓</span></div>
+          </div>
+
+          <div class="rc-details-section">
+            <div class="rc-alert-box info"><span class="rc-alert-icon">💬</span><div><strong>Script RC :</strong> « La réforme ne concerne pas votre association si elle n'est pas assujettie à la TVA — ce qui est le cas de la grande majorité des associations loi 1901 non fiscalisées. En revanche, si votre association exerce une activité commerciale assujettie à la TVA, toutes les obligations s'appliquent comme pour n'importe quelle entreprise. »</div></div>
+            <div class="rc-alert-box info" style="margin-top:0.5rem"><span class="rc-alert-icon">ℹ️</span><div><strong>À noter :</strong> Même si la réforme de facturation électronique ne s'applique pas, l'association peut tout à fait bénéficier d'une solution CENSE pour ses autres besoins de gestion (suivi comptable, paiements, collaboration avec l'expert-comptable).</div></div>
+          </div>
         </div>
       </div>
 
@@ -2230,7 +2260,8 @@ function rcShowPanel(id) {
       (id === 'chr' && txt === 'chr') ||
       (id === 'btp' && txt === 'btp') ||
       (id === 'pharma' && txt.includes('pharma')) ||
-      (id === 'sanctions' && txt.includes('sanction'))
+      (id === 'sanctions' && txt.includes('sanction')) ||
+      (id === 'associations' && txt.includes('assoc'))
     );
   });
 }
@@ -2255,7 +2286,8 @@ function rcSetActiveByPanel(id) {
         (id === 'chr' && t.includes('chr')) ||
         (id === 'btp' && t.includes('btp')) ||
         (id === 'pharma' && t.includes('pharma')) ||
-        (id === 'sanctions' && t.includes('sanction')))
+        (id === 'sanctions' && t.includes('sanction')) ||
+        (id === 'associations' && t.includes('assoc')))
       item.classList.add('active');
   });
 }
